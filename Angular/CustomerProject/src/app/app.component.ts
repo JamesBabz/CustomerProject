@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Customer} from './customers/shared/customer.model';
+import {CustomerService} from './customers/shared/customer.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  Customers: Customer[];
+
+  constructor(private customService: CustomerService) {
+    this.Customers = customService.getVideos();
+  }
 }
