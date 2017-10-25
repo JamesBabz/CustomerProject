@@ -22,15 +22,17 @@ namespace DAL.UOW
                    .UseInMemoryDatabase("TheDB")
                    .Options;
                 context = new CustomerProjectContext(optionsStatic);
-       /*     }
-            else{
-                var options = new DbContextOptionsBuilder<CustomerProjectContext>()
-                .UseSqlServer(opt.ConnectionString)
-                    .Options;
-                context = new CustomerProjectContext(options);
-            }*/
+                context.Database.EnsureCreated();
+                CustomerRepository = new CustomerRepository(context);
+            /*     }
+                 else{
+                     var options = new DbContextOptionsBuilder<CustomerProjectContext>()
+                     .UseSqlServer(opt.ConnectionString)
+                         .Options;
+                     context = new CustomerProjectContext(options);
+                 }*/
 
-            
+
         }
 
         public int Complete()
