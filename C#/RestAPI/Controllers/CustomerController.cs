@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using System;
+using BLL;
 using BLL.BusinessObjects;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace RestAPI.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]
-	[Route("api/addresses")]
+	[Route("api/customer")]
 	public class CustomerController : Controller
 	{
         IBLLFacade facade;
@@ -19,10 +20,16 @@ namespace RestAPI.Controllers
         }
 
 	    [HttpGet("{id}")]
+	    public String Get()
+	    {
+	        return "EWRHSEJSEHJRE";
+	    }
+
+       /* [HttpGet("{id}")]
 	    public CustomerBO Get(int id)
 	    {
 	        return facade.CustomerService.Get(id);
-	    }
+	    }*/
 
 	    [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)

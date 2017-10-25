@@ -36,7 +36,7 @@ namespace CustomerRestAPI
             services.AddMvc();
 
 			services.AddCors(o => o.AddPolicy("MyPolicy", builder => {
-				builder.WithOrigins("http://localhost:4200")
+				builder.WithOrigins("http://localhost:51171")
 					   .AllowAnyMethod()
 					   .AllowAnyHeader();
 			}));
@@ -59,25 +59,7 @@ namespace CustomerRestAPI
 
                 DALFacade facade = new DALFacade(new DbOptions());
 
-                using (var uow = facade.UnitOfWork)
-                {
-                    uow.CustomerRepository.Create(new Customer()
-                    {
-                        Id = 1,
-                        Address = "Vej vej1",
-                        FirstName = "test1",
-                        LastName = "testesen1"
-                    });
-                    uow.CustomerRepository.Create(new Customer()
-                    {
-                        Id = 2,
-                        Address = "Vej vej2",
-                        FirstName = "test2",
-                        LastName = "testesen2"
-                    });
-                    uow.Complete();
-                }
-
+                
 
             }
 
