@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CustomerProject
+namespace CustomerRestAPI
 {
     public class Program
     {

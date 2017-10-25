@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerProject.Controllers
+namespace CustomerRestAPI.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]
