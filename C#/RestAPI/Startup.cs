@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.BusinessObjects;
 using BLL.Facade;
 using DAL;
 using DAL.Entities;
@@ -56,12 +57,25 @@ namespace CustomerRestAPI
 				loggerFactory.AddDebug();
 
 				app.UseDeveloperExceptionPage();
-
-                DALFacade facade = new DALFacade(new DbOptions());
-
-                
-
             }
+
+            IBLLFacade facade = new BLLFacade(Configuration);
+
+            facade.CustomerService.Create(new CustomerBO()
+            {
+                Id = 1,
+                FirstName = "Hans",
+                LastName = "Hansen",
+                Address = "Hansvej 1"
+            });
+
+            facade.CustomerService.Create(new CustomerBO()
+            {
+                Id = 2,
+                FirstName = "Kurt",
+                LastName = "Kurtsen",
+                Address = "Kurtvej 2"
+            });
 
             app.UseMvc();
         }
