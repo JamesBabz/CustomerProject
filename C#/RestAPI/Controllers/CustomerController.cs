@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BLL;
 using BLL.BusinessObjects;
 using Microsoft.AspNetCore.Cors;
@@ -20,7 +21,13 @@ namespace RestAPI.Controllers
         }
 
 
-         [HttpGet("{id}")]
+	    [HttpGet]
+	    public IEnumerable<CustomerBO> Get()
+	    {
+	        return facade.CustomerService.GetAll();
+	    }
+
+        [HttpGet("{id}")]
          public CustomerBO Get(int id)
          {
              return facade.CustomerService.Get(id);
