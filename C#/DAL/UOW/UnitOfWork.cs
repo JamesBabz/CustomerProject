@@ -1,12 +1,13 @@
 ﻿using System;
 using DAL.Context;
+using DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        // public ICustomerRepository CustomerRepository { get; internal set; }
+        //public CustomerRepository CustomerRepository { get; internal set; }
         private CustomerProjectContext context;
         private static DbContextOptions<CustomerProjectContext> optionsStatic;
            
@@ -25,7 +26,7 @@ namespace DAL.UOW
                 context = new CustomerProjectContext(options);
             }
 
-            //CustomerRepository = new CustomerRepository(context);
+            CustomerRepository custRepo = new CustomerRepository(context);
         }
 
         public int Complete()
