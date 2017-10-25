@@ -28,7 +28,9 @@ namespace BLL.Services
         {
             using (var uow = facade.UnitOfWork)
             {
-                newCustomer = uow.
+                newCustomer = uow.CustomerRepository.Create(custConv.Convert(cust));
+                uow.Complete();
+                return custConv.Convert(newCustomer);
             }
         }
 
@@ -39,7 +41,12 @@ namespace BLL.Services
 
         public CustomerBO Get(int id)
         {
-            throw new NotImplementedException();
+            using (var uow = facade.UnitOfWork)
+            {
+                newCustomer = uow.CustomerRepository.Get(id);
+                uow.Complete();
+                return custConv.Convert(newCustomer);
+            }
         }
 
         public List<CustomerBO> GetAll()
