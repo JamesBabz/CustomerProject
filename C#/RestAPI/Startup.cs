@@ -1,5 +1,8 @@
 ﻿using BLL;
 using BLL.Facade;
+using DAL;
+using DAL.Entities;
+using DAL.Facade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -53,6 +56,29 @@ namespace CustomerRestAPI
 				loggerFactory.AddDebug();
 
 				app.UseDeveloperExceptionPage();
+
+                DALFacade facade = new DALFacade(new DbOptions());
+
+                using (var uow = facade.UnitOfWork)
+                {
+                    uow.CustomerRepository.Create(new Customer()
+                    {
+                        Id = 1,
+                        Address = "Vej vej1",
+                        FirstName = "test1",
+                        LastName = "testesen1"
+                    });
+                    uow.CustomerRepository.Create(new Customer()
+                    {
+                        Id = 2,
+                        Address = "Vej vej2",
+                        FirstName = "test2",
+                        LastName = "testesen2"
+                    });
+                    uow.Complete();
+                }
+
+
             }
 
             app.UseMvc();

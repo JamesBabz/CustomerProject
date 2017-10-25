@@ -1,4 +1,5 @@
 ﻿using System;
+using BLL.BusinessObjects;
 using DAL;
 using DAL.Facade;
 using Microsoft.Extensions.Configuration;
@@ -16,5 +17,7 @@ namespace BLL.Facade
                 Environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
             });
         }
+
+        public IService<CustomerBO> CustomerService { get; }
     }
 }
