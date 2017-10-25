@@ -10,9 +10,9 @@ namespace BLL.IServices
     {
         //C
         ProductBO Create(ProductBO product);
-        List<ProductBO> AddProducts(List<ProductBO> products);
         //R
         List<ProductBO> GetAll();
+        ProductBO Get(int id);
         //U
         ProductBO Update(ProductBO product);
         //D

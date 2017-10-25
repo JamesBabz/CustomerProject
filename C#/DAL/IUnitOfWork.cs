@@ -1,10 +1,12 @@
 ﻿using System;
+using DAL.Entities;
+using DAL.Repositories;
 
 namespace DAL
 {
     public interface IUnitOfWork : IDisposable
     {
-        //ICustomerRepository CustomerRepository { get; }
+        IRepository<Customer> CustomerRepository { get; }
        
         int Complete();
     }
