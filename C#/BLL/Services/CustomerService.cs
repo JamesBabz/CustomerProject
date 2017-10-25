@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BLL.BusinessObjects;
 using BLL.Converters;
@@ -51,7 +52,10 @@ namespace BLL.Services
 
         public List<CustomerBO> GetAll()
         {
-            throw new NotImplementedException();
+            using (var uow = facade.UnitOfWork)
+            {
+                return uow.CustomerRepository.GetAll().Select(custConv.Convert).ToList();
+            }
         }
 
         public CustomerBO Update(CustomerBO cust)
