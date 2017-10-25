@@ -9,9 +9,9 @@ namespace BLL.IServices
     {
         //C
         OrderBO Create(OrderBO order);
-        List<OrderBO> AddOrders(List<OrderBO> orders);
         //R
         List<OrderBO> GetAll();
+        OrderBO Get(int id);
         //U
         OrderBO Update(OrderBO order);
         //D
