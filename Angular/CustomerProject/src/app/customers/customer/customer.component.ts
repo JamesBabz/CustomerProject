@@ -11,7 +11,7 @@ export class CustomerComponent implements OnInit {
   @Input()
 Customer: Customer;
   constructor() {
-    this.Customer = {FirstName: 'Sigurd', LastName: 'Rasmussen', Address: 'Fuckerstreet'};
+
   }
 
   ngOnInit() {

@@ -10,7 +10,7 @@ import {CustomerService} from './customers/shared/customer.service';
 export class AppComponent {
   Customers: Customer[];
 
-  constructor(private customService: CustomerService) {
-    this.Customers = customService.getVideos();
-  }
+constructor(private CustomerService: CustomerService){
+  CustomerService.getCustomers().subscribe(Customers => this.Customers = Customers);
+}
 }
