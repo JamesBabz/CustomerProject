@@ -4,6 +4,7 @@ using System.Text;
 
 namespace DAL.Entities
 {
+
     public class Customer : IEntity
     {
         public int Id { get; set; }

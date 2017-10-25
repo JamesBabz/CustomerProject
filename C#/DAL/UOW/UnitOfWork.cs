@@ -7,22 +7,22 @@ namespace DAL.UOW
     public class UnitOfWork : IUnitOfWork
     {
         // public ICustomerRepository CustomerRepository { get; internal set; }
-        private EASVContext context;
-        private static DbContextOptions<EASVContext> optionsStatic;
+        private CustomerProjectContext context;
+        private static DbContextOptions<CustomerProjectContext> optionsStatic;
            
         public UnitOfWork(DbOptions opt)
         {
              if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
-                optionsStatic = new DbContextOptionsBuilder<EASVContext>()
+                optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
                    .UseInMemoryDatabase("TheDB")
                    .Options;
-                context = new EASVContext(optionsStatic);
+                context = new CustomerProjectContext(optionsStatic);
             }
             else{
-                var options = new DbContextOptionsBuilder<EASVContext>()
+                var options = new DbContextOptionsBuilder<CustomerProjectContext>()
                 .UseSqlServer(opt.ConnectionString)
                     .Options;
-                context = new EASVContext(options);
+                context = new CustomerProjectContext(options);
             }
 
             //CustomerRepository = new CustomerRepository(context);
