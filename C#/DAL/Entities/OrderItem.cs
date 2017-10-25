@@ -6,7 +6,7 @@ namespace DAL.Entities
 {
     public class OrderItem : IEntity
     {
-        public int Id { get; internal set; }
+        public int Id { get; set; }
 
         public int Quantity { get; set; }
 
