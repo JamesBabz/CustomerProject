@@ -37,7 +37,7 @@ namespace CustomerRestAPI
             services.AddMvc();
 
 			services.AddCors(o => o.AddPolicy("MyPolicy", builder => {
-				builder.WithOrigins("http://localhost:51171")
+				builder.WithOrigins("http://localhost:4200")
 					   .AllowAnyMethod()
 					   .AllowAnyHeader();
 			}));
