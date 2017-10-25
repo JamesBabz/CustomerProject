@@ -1,15 +1,20 @@
 ﻿using System;
 using DAL.Context;
+using DAL.Entities;
+using DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        // public ICustomerRepository CustomerRepository { get; internal set; }
-        private CustomerProjectContext context;
+        public IRepository<Customer> CustomerRepository { get; internal set; }
+
+
+
+        public CustomerProjectContext context;
         private static DbContextOptions<CustomerProjectContext> optionsStatic;
-           
+
         public UnitOfWork(DbOptions opt)
         {
              if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
@@ -25,7 +30,7 @@ namespace DAL.UOW
                 context = new CustomerProjectContext(options);
             }
 
-            //CustomerRepository = new CustomerRepository(context);
+            
         }
 
         public int Complete()

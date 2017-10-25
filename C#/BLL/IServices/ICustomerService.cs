@@ -9,9 +9,9 @@ namespace BLL.IServices
     {
         //C
         CustomerBO Create(CustomerBO cust);
-        List<CustomerBO> AddCustomers(List<CustomerBO>customers);
         //R
         List<CustomerBO> GetAll();
+        CustomerBO Get(int id);
         //U
         CustomerBO Update(CustomerBO cust);
         //D

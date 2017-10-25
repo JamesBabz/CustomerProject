@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Context
 {
-    class CustomerProjectContext : DbContext
+    public class CustomerProjectContext : DbContext
     {
         public CustomerProjectContext(DbContextOptions<CustomerProjectContext> options): base(options)  { }
 
