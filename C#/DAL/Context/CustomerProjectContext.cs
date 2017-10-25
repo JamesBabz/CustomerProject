@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Context
 {
@@ -22,6 +23,12 @@ namespace DAL.Context
         }
 
         //public DbSet<Entity> Entites { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
 
     }
 }

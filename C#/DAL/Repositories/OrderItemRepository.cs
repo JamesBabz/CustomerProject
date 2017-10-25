@@ -7,37 +7,37 @@ using DAL.Entities;
 
 namespace DAL.Repositories
 {
-    class CustomerRepository : IRepository<Customer>
+    class OrderItemRepository : IRepository<OrderItem>
     {
         CustomerProjectContext _context;
 
-        CustomerRepository(CustomerProjectContext context)
+        OrderItemRepository(CustomerProjectContext context)
         {
             _context = context;
         }
 
-        public Customer Create(Customer ent)
+        public OrderItem Create(OrderItem ent)
         {
-            _context.Customers.Add(ent);
+            _context.OrderItems.Add(ent);
             return ent;
         }
 
-        public IEnumerable<Customer> GetAll()
+        public IEnumerable<OrderItem> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Customer> GetAllById(List<int> ids)
+        public IEnumerable<OrderItem> GetAllById(List<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public Customer Get(int Id)
+        public OrderItem Get(int Id)
         {
-            return _context.Customers.FirstOrDefault(x => x.Id == Id);
+            return _context.OrderItems.FirstOrDefault(x => x.Id == Id);
         }
 
-        public Customer Delete(int Id)
+        public OrderItem Delete(int Id)
         {
             throw new NotImplementedException();
         }
