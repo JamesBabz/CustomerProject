@@ -1,5 +1,8 @@
 ﻿using BLL;
 using BLL.Facade;
+using DAL;
+using DAL.Entities;
+using DAL.Facade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,7 +36,7 @@ namespace CustomerRestAPI
             services.AddMvc();
 
 			services.AddCors(o => o.AddPolicy("MyPolicy", builder => {
-				builder.WithOrigins("http://localhost:4200")
+				builder.WithOrigins("http://localhost:51171")
 					   .AllowAnyMethod()
 					   .AllowAnyHeader();
 			}));
@@ -53,6 +56,11 @@ namespace CustomerRestAPI
 				loggerFactory.AddDebug();
 
 				app.UseDeveloperExceptionPage();
+
+                DALFacade facade = new DALFacade(new DbOptions());
+
+                
+
             }
 
             app.UseMvc();

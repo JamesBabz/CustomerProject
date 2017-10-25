@@ -1,7 +1,11 @@
-﻿namespace BLL
+﻿using BLL.BusinessObjects;
+using BLL.IServices;
+using BLL.Services;
+
+namespace BLL
 {
     public interface IBLLFacade
     {
-        //ICustomerService CustomerService { get { return new CustomerService(facade); }
+        IService<CustomerBO> CustomerService { get; }
     }
 }

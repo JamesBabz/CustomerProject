@@ -17,18 +17,18 @@ namespace DAL.UOW
 
         public UnitOfWork(DbOptions opt)
         {
-             if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
+            // if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
                 optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
                    .UseInMemoryDatabase("TheDB")
                    .Options;
                 context = new CustomerProjectContext(optionsStatic);
-            }
+       /*     }
             else{
                 var options = new DbContextOptionsBuilder<CustomerProjectContext>()
                 .UseSqlServer(opt.ConnectionString)
                     .Options;
                 context = new CustomerProjectContext(options);
-            }
+            }*/
 
             
         }
