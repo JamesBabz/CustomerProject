@@ -4,6 +4,7 @@ using System.Text;
 using BLL.BusinessObjects;
 using BLL.Converters;
 using BLL.IServices;
+using DAL;
 using DAL.Entities;
 using DAL.Facade;
 using DAL.Repositories;
@@ -13,13 +14,13 @@ namespace BLL.Services
 
     public class CustomerService : ICustomerService
     {
-        private DALFacade facade;
+        private IDALFacade facade;
         private CustomerConverter custConv = new CustomerConverter();
         private Customer newCustomer;
 
 
 
-        public CustomerService(DALFacade facade)
+        public CustomerService(IDALFacade facade)
         {
             this.facade = facade;
         }

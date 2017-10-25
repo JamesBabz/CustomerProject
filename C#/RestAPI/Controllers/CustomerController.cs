@@ -8,7 +8,7 @@ namespace RestAPI.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]
-	[Route("api/customer")]
+	[Route("api/[controller]")]
 	public class CustomerController : Controller
 	{
         IBLLFacade facade;
@@ -19,19 +19,14 @@ namespace RestAPI.Controllers
 
         }
 
-	    [HttpGet("{id}")]
-	    public String Get()
-	    {
-	        return "EWRHSEJSEHJRE";
-	    }
 
-       /* [HttpGet("{id}")]
-	    public CustomerBO Get(int id)
-	    {
-	        return facade.CustomerService.Get(id);
-	    }*/
+         [HttpGet("{id}")]
+         public CustomerBO Get(int id)
+         {
+             return facade.CustomerService.Get(id);
+         }
 
-	    [HttpPost]
+        [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)
 	    {
 	        if (!ModelState.IsValid)

@@ -24,7 +24,7 @@ namespace DAL.Repositories
 
         public IEnumerable<Customer> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Customers.ToList();
         }
 
         public IEnumerable<Customer> GetAllById(List<int> ids)
