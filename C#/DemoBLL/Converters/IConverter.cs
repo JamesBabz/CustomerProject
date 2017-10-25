@@ -1,5 +1,4 @@
-﻿using System;
-namespace DemoBLL.Converters
+﻿namespace BLL.Converters
 {
     interface IConverter <IEntity, IBusinessObject>
     {

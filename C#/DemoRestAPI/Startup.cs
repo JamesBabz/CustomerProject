@@ -1,12 +1,12 @@
-﻿using DemoBLL;
-using DemoBLL.Facade;
+﻿using BLL;
+using BLL.Facade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace CustomerRestAPI
+namespace CustomerProject
 {
     public class Startup
     {

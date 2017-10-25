@@ -1,5 +1,6 @@
 ﻿using System;
-namespace DemoDAL
+
+namespace DAL
 {
     public interface IUnitOfWork : IDisposable
     {

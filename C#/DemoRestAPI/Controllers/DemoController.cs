@@ -1,8 +1,8 @@
-﻿using DemoBLL;
+﻿using BLL;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerRestAPI.Controllers
+namespace CustomerProject.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]

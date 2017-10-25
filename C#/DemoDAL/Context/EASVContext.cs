@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DemoDAL.Context
+namespace DAL.Context
 {
     class EASVContext : DbContext
     {

@@ -1,5 +1,4 @@
-﻿using System;
-namespace DemoBLL
+﻿namespace BLL
 {
     public interface IBLLFacade
     {
