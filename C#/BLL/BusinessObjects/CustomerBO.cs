@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Entities
+namespace BLL.BusinessObjects
 {
-
-    public class Customer : IEntity
+    public class CustomerBO : IBusinessObject
     {
         public int Id { get; internal set; }
 
