@@ -6,7 +6,7 @@ namespace BLL.BusinessObjects
 {
     public class OrderBO : IBusinessObject
     {
-        public int Id { get; internal set; }
+        public int Id { get; set; }
 
         public DateTime OrderDate { get; set; }
 
