@@ -2,16 +2,16 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerRestAPI.Controllers
+namespace RestAPI.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]
 	[Route("api/addresses")]
-	public class DemoController : Controller
+	public class CustomerController : Controller
 	{
         IBLLFacade facade;
 
-        public DemoController(IBLLFacade facade)
+        public CustomerController(IBLLFacade facade)
         {
             this.facade = facade;
         }
