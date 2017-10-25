@@ -11,19 +11,7 @@ namespace DAL.Context
         {
             base.OnModelCreating(modelBuilder);
         }
-
-        static DbContextOptions<CustomerProjectContext> options =
-            new DbContextOptionsBuilder<CustomerProjectContext>()
-                .UseInMemoryDatabase("TheDB")
-                .Options;
-
-        public CustomerProjectContext() : base(options)
-        {
-
-        }
-
-        //public DbSet<Entity> Entites { get; set; }
-
+       
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
