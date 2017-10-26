@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using RestAPI;
 
-namespace CustomerRestAPI
+namespace RestAPI
 {
     public class Program
     {

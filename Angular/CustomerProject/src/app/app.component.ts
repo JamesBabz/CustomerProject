@@ -8,9 +8,9 @@ import {CustomerService} from './customers/shared/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  Customers: Customer[];
+  customers: Customer[];
 
 constructor(private CustomerService: CustomerService){
-  CustomerService.getCustomers().subscribe(Customers => this.Customers = Customers);
+  CustomerService.getCustomers().subscribe(Customers => this.customers = Customers);
 }
 }

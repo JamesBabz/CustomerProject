@@ -9,7 +9,7 @@ import {Customer} from '../shared/customer.model';
 export class CustomerComponent implements OnInit {
 
   @Input()
-Customer: Customer;
+customer: Customer;
   constructor() {
 
   }
