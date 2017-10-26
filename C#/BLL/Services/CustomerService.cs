@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BLL.BusinessObjects;
+﻿using BLL.BusinessObjects;
 using BLL.Converters;
 using BLL.IServices;
 using DAL.Entities;
 using DAL.Facade;
-using DAL.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BLL.Services
-{ 
+{
 
     public class CustomerService : ICustomerService
     {
@@ -37,7 +35,12 @@ namespace BLL.Services
 
         public CustomerBO Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var uow = facade.UnitOfWork)
+            {
+                newCustomer = uow.CustomerRepository.Delete(id);
+                uow.Complete();
+                return custConv.Convert(newCustomer);
+            }
         }
 
         public CustomerBO Get(int id)
@@ -60,7 +63,23 @@ namespace BLL.Services
 
         public CustomerBO Update(CustomerBO cust)
         {
-            throw new NotImplementedException();
+            using (var uow = facade.UnitOfWork)
+            {
+                var customerFromDb = uow.CustomerRepository.Get(cust.Id);
+                if (customerFromDb==null)
+                {
+                    throw new InvalidOperationException("Customer not found");
+                }
+
+                customerFromDb.Id = cust.Id;
+                customerFromDb.FirstName = cust.FirstName;
+                customerFromDb.LastName = cust.LastName;
+                customerFromDb.Address = cust.Address;
+                uow.Complete();
+
+                return custConv.Convert(customerFromDb);
+
+            }
         }
     }
 }
