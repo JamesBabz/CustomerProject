@@ -10,10 +10,10 @@ export class CustomerService {
 
   constructor(private hhtp: HttpClient) { }
 
-  getVideos(): Observable <Customer[]> {
-    return this.hhtp
-      .get<Customer[]>(environment.ApiEndPoint + '/customers');
+  getCustomers(): Observable <Customer[]> {
 
+    return this.hhtp
+      .get<Customer[]> (environment.ApiEndPoint + '/customer');
   }
 
 }
