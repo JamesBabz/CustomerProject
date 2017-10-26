@@ -6,6 +6,6 @@ namespace BLL
 {
     public interface IBLLFacade
     {
-        IService<CustomerBO> CustomerService { get; }
+        CustomerService CustomerService { get; }
     }
 }

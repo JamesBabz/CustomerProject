@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BLL;
 using BLL.BusinessObjects;
 using Microsoft.AspNetCore.Cors;
@@ -8,7 +9,7 @@ namespace RestAPI.Controllers
 {
 	[EnableCors("MyPolicy")]
 	[Produces("application/json")]
-	[Route("api/customer")]
+	[Route("api/[controller]")]
 	public class CustomerController : Controller
 	{
         IBLLFacade facade;
@@ -19,19 +20,20 @@ namespace RestAPI.Controllers
 
         }
 
-	    [HttpGet("{id}")]
-	    public String Get()
+
+	    [HttpGet]
+	    public IEnumerable<CustomerBO> Get()
 	    {
-	        return "EWRHSEJSEHJRE";
+	        return facade.CustomerService.GetAll();
 	    }
 
-       /* [HttpGet("{id}")]
-	    public CustomerBO Get(int id)
-	    {
-	        return facade.CustomerService.Get(id);
-	    }*/
+        [HttpGet("{id}")]
+         public CustomerBO Get(int id)
+         {
+             return facade.CustomerService.Get(id);
+         }
 
-	    [HttpPost]
+        [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)
 	    {
 	        if (!ModelState.IsValid)
