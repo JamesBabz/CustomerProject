@@ -13,7 +13,7 @@ namespace DAL.Repositories
     {
         CustomerProjectContext _context;
 
-        ProductRepository(CustomerProjectContext context)
+        public ProductRepository(CustomerProjectContext context)
         {
             _context = context;
         }

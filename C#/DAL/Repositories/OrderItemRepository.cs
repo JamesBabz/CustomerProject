@@ -11,7 +11,7 @@ namespace DAL.Repositories
     {
         CustomerProjectContext _context;
 
-        OrderItemRepository(CustomerProjectContext context)
+        public OrderItemRepository(CustomerProjectContext context)
         {
             _context = context;
         }

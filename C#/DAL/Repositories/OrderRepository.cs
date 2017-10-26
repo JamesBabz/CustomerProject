@@ -7,11 +7,11 @@ using DAL.Entities;
 
 namespace DAL.Repositories
 {
-    class OrderRepository : IRepository<Order>
+     class OrderRepository : IRepository<Order>
     {
         CustomerProjectContext _context;
 
-        OrderRepository(CustomerProjectContext context)
+        public OrderRepository(CustomerProjectContext context)
         {
             _context = context;
         }
@@ -39,7 +39,9 @@ namespace DAL.Repositories
 
         public Order Delete(int Id)
         {
-            throw new NotImplementedException();
+            var order = Get(Id);
+            _context.Orders.Remove(order);
+            return order;
         }
     }
 }

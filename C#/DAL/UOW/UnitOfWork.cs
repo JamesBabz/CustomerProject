@@ -27,6 +27,9 @@ namespace DAL.UOW
                 context = new CustomerProjectContext(optionsStatic);
                 context.Database.EnsureCreated();
                 CustomerRepository = new CustomerRepository(context);
+                OrderRepository = new OrderRepository(context);
+                OrderitemRepository = new OrderItemRepository(context);
+                ProductRepository = new ProductRepository(context);
             /*     }
                  else{
                      var options = new DbContextOptionsBuilder<CustomerProjectContext>()
