@@ -24,7 +24,7 @@ namespace DAL.Repositories
 
         public IEnumerable<OrderItem> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.OrderItems.ToList();
         }
 
         public IEnumerable<OrderItem> GetAllById(List<int> ids)
@@ -39,7 +39,9 @@ namespace DAL.Repositories
 
         public OrderItem Delete(int Id)
         {
-            throw new NotImplementedException();
+            var orderItem = Get(Id);
+            _context.OrderItems.Remove(orderItem);
+            return orderItem;
         }
     }
 }

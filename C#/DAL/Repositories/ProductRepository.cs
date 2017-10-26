@@ -41,7 +41,9 @@ namespace DAL.Repositories
 
         public Product Delete(int Id)
         {
-            throw new NotImplementedException();
+            var product = Get(Id);
+            _context.Products.Remove(product);
+            return product;
         }
     }
 }

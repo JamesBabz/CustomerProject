@@ -69,6 +69,20 @@ namespace CustomerRestAPI
                 OrderDate = DateTime.Now
             });
 
+            facade.ProductService.Create(new ProductBO()
+            {
+                Id = 3,
+                Name = "Telefon",
+                ListPrice = 120
+            });
+
+            facade.OrderItemService.Create(new OrderItemBO()
+            {
+                Id = 3,
+                Quantity = 10,
+                UnitPrice = 100
+            });
+
             facade.CustomerService.Create(new CustomerBO()
             {
                 Id = 1,
