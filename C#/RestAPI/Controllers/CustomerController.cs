@@ -20,7 +20,6 @@ namespace RestAPI.Controllers
 
         }
 
-
 	    [HttpGet]
 	    public IEnumerable<CustomerBO> Get()
 	    {

@@ -39,7 +39,9 @@ namespace DAL.Repositories
 
         public Customer Delete(int Id)
         {
-            throw new NotImplementedException();
+            var customer = Get(Id);
+            _context.Customers.Remove(customer);
+            return customer;
         }
     }
 }
