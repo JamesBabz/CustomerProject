@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using System;
+using BLL;
 using BLL.BusinessObjects;
 using BLL.Facade;
 using DAL;
@@ -60,6 +61,13 @@ namespace CustomerRestAPI
             }
 
             IBLLFacade facade = new BLLFacade(Configuration);
+
+            facade.OrderService.Create(new OrderBO()
+            {
+                Id = 3,
+                DeliveryDate = DateTime.Now,
+                OrderDate = DateTime.Now
+            });
 
             facade.CustomerService.Create(new CustomerBO()
             {

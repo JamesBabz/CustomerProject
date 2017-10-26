@@ -9,7 +9,10 @@ namespace DAL.UOW
     public class UnitOfWork : IUnitOfWork
     {
         public IRepository<Customer> CustomerRepository { get; internal set; }
-
+        public IRepository<Order> OrderRepository { get; internal set; }
+        public IRepository<OrderItem> OrderitemRepository { get; internal set; }
+        public IRepository<Product> ProductRepository { get; internal set; }
+        
 
 
         public CustomerProjectContext context;
