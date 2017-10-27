@@ -83,6 +83,13 @@ namespace CustomerRestAPI
                 UnitPrice = 100
             });
 
+            facade.OrderItemService.Create(new OrderItemBO()
+            {
+                Id = 4,
+                Quantity = 10,
+                UnitPrice = 100
+            });
+
             facade.CustomerService.Create(new CustomerBO()
             {
                 Id = 1,
