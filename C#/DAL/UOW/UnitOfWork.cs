@@ -12,7 +12,7 @@ namespace DAL.UOW
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<OrderItem> OrderitemRepository { get; internal set; }
         public IRepository<Product> ProductRepository { get; internal set; }
-        
+
 
 
         public CustomerProjectContext context;
@@ -20,47 +20,48 @@ namespace DAL.UOW
 
         public UnitOfWork(DbOptions opt)
         {
-         
+                context = new CustomerProjectContext();
+                context.Database.EnsureCreated();
 
-
-            // if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
-                //optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
-                //   .UseInMemoryDatabase("TheDB")
-                //   .Options;
-                context = new CustomerProjectContext(optionsStatic);
-                context.Database.EnsureCreated(); 
-            /*     }
-                 else{
-                     var options = new DbContextOptionsBuilder<CustomerProjectContext>()
-                     .UseSqlServer(opt.ConnectionString)
-                         .Options;
-                     context = new CustomerProjectContext(options);
-                 }*/
-
-           
-            
+                CustomerRepository = new CustomerRepository(context);
+                OrderRepository = new OrderRepository(context);
+                OrderitemRepository = new OrderItemRepository(context);
+                ProductRepository = new ProductRepository(context);
+            }
 
 
 
 
 
-            CustomerRepository = new CustomerRepository(context);
-            OrderRepository = new OrderRepository(context);
-            OrderitemRepository = new OrderItemRepository(context);
-            ProductRepository = new ProductRepository(context);
+
+
+        //if (opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString))
+        //{
+        //    optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
+        //        .UseInMemoryDatabase("TheDB")
+        //        .Options;
+        //    context = new CustomerProjectContext(optionsStatic);
+        //    context.Database.EnsureCreated();
+        //}
+        //else
+        //{
+        //    var options = new DbContextOptionsBuilder<CustomerProjectContext>()
+        //        .UseSqlServer(opt.ConnectionString)
+        //        .Options;
+    
+
+
+    public int Complete()
+        {
+            //The number of objects written to the underlying database.
+            return context.SaveChanges();
         }
-
-        public int Complete()
-		{
-			//The number of objects written to the underlying database.
-			return context.SaveChanges();
-		}
 
         public void Dispose()
         {
             context.Dispose();
 
-            
+
         }
 
     }

@@ -60,51 +60,7 @@ namespace CustomerRestAPI
 				app.UseDeveloperExceptionPage();
             }
 
-            IBLLFacade facade = new BLLFacade(Configuration);
-
-            facade.OrderService.Create(new OrderBO()
-            {
-                Id = 3,
-                DeliveryDate = DateTime.Now,
-                OrderDate = DateTime.Now
-            });
-
-            facade.ProductService.Create(new ProductBO()
-            {
-                Id = 3,
-                Name = "Telefon",
-                ListPrice = 120
-            });
-
-            facade.OrderItemService.Create(new OrderItemBO()
-            {
-                Id = 3,
-                Quantity = 10,
-                UnitPrice = 100
-            });
-
-            facade.OrderItemService.Create(new OrderItemBO()
-            {
-                Id = 4,
-                Quantity = 10,
-                UnitPrice = 100
-            });
-
-            facade.CustomerService.Create(new CustomerBO()
-            {
-                Id = 1,
-                FirstName = "Hans",
-                LastName = "Hansen",
-                Address = "Hansvej 1"
-            });
-
-            facade.CustomerService.Create(new CustomerBO()
-            {
-                Id = 2,
-                FirstName = "Kurt",
-                LastName = "Kurtsen",
-                Address = "Kurtvej 2"
-            });
+    
 
             app.UseMvc();
         }
