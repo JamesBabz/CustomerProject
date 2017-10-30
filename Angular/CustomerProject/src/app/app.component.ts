@@ -13,8 +13,8 @@ export class AppComponent {
   customers: Customer[];
   products: Product[];
 
-constructor(private produtService: ProductService, private customerService: CustomerService){
-  customerService.getCustomers().subscribe(Customers => this.customers = Customers);
-  produtService.getProducts().subscribe(Products => this.products = Products );
+constructor(){
+
+
 }
 }
