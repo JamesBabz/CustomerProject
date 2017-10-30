@@ -1,0 +1,18 @@
+<h1>Products</h1>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let prod of products; let i = index">
+
+      <div class="clearfix" *ngIf="i % 3 == 0"></div>
+      <div class="col-md-4">
+        <app-product
+          (click)='details(prod)' [product]="prod"></app-product>
+      </div>
+
+
+    </ng-container>
+  </div>
+</div>
+
+<!--<app-product-->
+<!--(click)= 'details(prod)' *ngFor="let prod of products" [product]="prod"></app-product>-->

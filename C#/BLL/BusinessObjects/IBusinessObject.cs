@@ -2,6 +2,6 @@
 {
     public interface IBusinessObject
     {
-        int Id { get; set; }
+        int Id { get; }
     }
 }
