@@ -18,8 +18,7 @@ export class ProductListComponent implements OnInit {
   }
 
   details(product: Product) {
-    this.router.navigateByUrl('/product/' + product.id )
-    console.log('clicked' + product.id);
+    this.router.navigateByUrl('/product/' + product.id );
   }
 
 }
