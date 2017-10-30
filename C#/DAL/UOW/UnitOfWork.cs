@@ -20,16 +20,15 @@ namespace DAL.UOW
 
         public UnitOfWork(DbOptions opt)
         {
+         
+
+
             // if(opt.Environment == "Development" && String.IsNullOrEmpty(opt.ConnectionString)){
-                optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
-                   .UseInMemoryDatabase("TheDB")
-                   .Options;
+                //optionsStatic = new DbContextOptionsBuilder<CustomerProjectContext>()
+                //   .UseInMemoryDatabase("TheDB")
+                //   .Options;
                 context = new CustomerProjectContext(optionsStatic);
-                context.Database.EnsureCreated();
-                CustomerRepository = new CustomerRepository(context);
-                OrderRepository = new OrderRepository(context);
-                OrderitemRepository = new OrderItemRepository(context);
-                ProductRepository = new ProductRepository(context);
+                context.Database.EnsureCreated(); 
             /*     }
                  else{
                      var options = new DbContextOptionsBuilder<CustomerProjectContext>()
@@ -38,7 +37,17 @@ namespace DAL.UOW
                      context = new CustomerProjectContext(options);
                  }*/
 
+           
+            
 
+
+
+
+
+            CustomerRepository = new CustomerRepository(context);
+            OrderRepository = new OrderRepository(context);
+            OrderitemRepository = new OrderItemRepository(context);
+            ProductRepository = new ProductRepository(context);
         }
 
         public int Complete()
@@ -50,6 +59,8 @@ namespace DAL.UOW
         public void Dispose()
         {
             context.Dispose();
+
+            
         }
 
     }
