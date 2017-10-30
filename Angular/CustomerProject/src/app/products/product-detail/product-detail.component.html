@@ -1,17 +1,25 @@
 <button
-  class="btn btn-success"
+  class="btn btn-primary"
   routerLink="/product"
   routerLinkActive="active">Back
 </button>
-<div class="product-detail">
+<div class="product-detail unelectable">
   <img class="img" src="http://via.placeholder.com/200x220">
-  <h2>
-    id: {{product?.id}}
-  </h2>
   <h1>
     Product: {{product?.name}}
   </h1>
   <h2>
     Price: {{product?.listPrice}} $
   </h2>
+
+
+  <p>
+    <button class="btn btn-primary" (click)="changeSuccessMessage()">Buy</button>
+  </p>
+  <div class="col-md-5 ">
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+  </div>
 </div>
+
+
+

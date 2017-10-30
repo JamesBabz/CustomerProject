@@ -4,6 +4,25 @@
   border-radius: 10px;
 }
 .product-detail{
+  border: solid 2px dodgerblue;
+  height: 500px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px;
+}
+
+.btn{
+  margin: 10px;
+  height: 40px;
+  width: 60px;
+}
+.unelectable{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input{
+  width: 40px;
 }
