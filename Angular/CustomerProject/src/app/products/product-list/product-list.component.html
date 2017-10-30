@@ -1,0 +1,3 @@
+<h1>Products</h1>
+<app-product
+  (click)= 'details(prod)' *ngFor="let prod of products" [product]="prod"></app-product>

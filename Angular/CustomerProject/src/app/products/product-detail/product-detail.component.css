@@ -1,0 +1,9 @@
+.img{
+  float: left;
+  margin: 5px;
+  border-radius: 10px;
+}
+.product-detail{
+  border-radius: 10px;
+  margin: 5px;
+}
