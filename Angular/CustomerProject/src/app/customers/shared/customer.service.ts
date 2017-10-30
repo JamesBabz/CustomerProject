@@ -16,4 +16,11 @@ export class CustomerService {
       .get<Customer[]> (environment.ApiEndPoint + '/customer');
   }
 
+  getCustomerById(id: number): Observable <Customer> {
+    return this.hhtp
+      .get(environment.ApiEndPoint +
+        '/customer/' + id)
+      ;
+  }
+
 }
