@@ -1,0 +1,5 @@
+.productBorder{
+  border: solid 2px blue;
+  border-radius: 10px;
+  margin: 5px;
+}
