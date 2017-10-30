@@ -1,2 +1,8 @@
+
+
 <app-customer *ngFor="let cust of customers" [customer]="cust"></app-customer>
-<app-product *ngFor="let prod of products" [product]="prod"></app-product>
+
+
+<!--<div ngIf="location.path() == '/products'">-->
+  <app-product *ngFor="let prod of products" [product]="prod"></app-product>
+<!--</div>-->
