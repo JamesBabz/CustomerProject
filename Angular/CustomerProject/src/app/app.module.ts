@@ -9,15 +9,26 @@ import {ProductService} from './products/shared/product.service';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import {RouterModule, Routes} from '@angular/router';
+import { CustomerListComponent } from './customers/customer-list/customer-list.component';
+import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 const appRoutes: Routes = [
   { path: 'product/:id',      component: ProductDetailComponent},
+  { path: 'customer/:id',      component: CustomerDetailComponent},
   {
     path: 'product',
     component: ProductListComponent,
     data: { title: 'Product list' }
+  },{
+    path: 'customer',
+    component: CustomerListComponent,
+    data: { title: 'Customer list' }
   },
   { path: '',
     redirectTo: '/product',
+    pathMatch: 'full'
+  },
+  { path: '',
+    redirectTo: '/customer',
     pathMatch: 'full'
   }
 ];
@@ -28,7 +39,9 @@ const appRoutes: Routes = [
     CustomerComponent,
     ProductComponent,
     ProductDetailComponent,
-    ProductListComponent
+    ProductListComponent,
+    CustomerListComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
