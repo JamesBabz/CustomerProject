@@ -17,21 +17,23 @@ namespace RestAPI.Controllers
         public CustomerController(IBLLFacade facade)
         {
             this.facade = facade;
-
         }
 
-	    [HttpGet]
+	    // GET: api/customer
+        [HttpGet]
 	    public IEnumerable<CustomerBO> Get()
 	    {
 	        return facade.CustomerService.GetAll();
 	    }
 
+	    // GET: api/customer/5
         [HttpGet("{id}")]
          public CustomerBO Get(int id)
          {
              return facade.CustomerService.Get(id);
          }
 
+	    // POST: api/customer/
         [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)
 	    {

@@ -24,11 +24,13 @@ namespace BLL.Converters
         public ProductBO Convert(Product product)
         {
             if (product == null) { return null; }
-            return new ProductBO()
             {
-                Id = product.Id,
-                Name = product.Name,
-                ListPrice = product.ListPrice
+                return new ProductBO()
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    ListPrice = product.ListPrice
+                };
             };
         }
 

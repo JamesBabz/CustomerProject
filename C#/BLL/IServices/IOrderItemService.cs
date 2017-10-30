@@ -12,7 +12,7 @@ namespace BLL.IServices
         List<OrderItemBO> AddOrderItems(List<OrderItemBO> orderItems);
         //R
         List<OrderItemBO> GetAll();
-        OrderItemBO Get();
+        OrderItemBO Get(int id);
         //U
         OrderItemBO Update(OrderItemBO orderItem);
         //D

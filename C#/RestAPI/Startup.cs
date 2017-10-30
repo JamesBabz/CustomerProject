@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using System;
+using BLL;
 using BLL.BusinessObjects;
 using BLL.Facade;
 using DAL;
@@ -60,6 +61,34 @@ namespace RestAPI
             }
 
             IBLLFacade facade = new BLLFacade(Configuration);
+
+            facade.OrderService.Create(new OrderBO()
+            {
+                Id = 3,
+                DeliveryDate = DateTime.Now,
+                OrderDate = DateTime.Now
+            });
+
+            facade.ProductService.Create(new ProductBO()
+            {
+                Id = 3,
+                Name = "Telefon",
+                ListPrice = 120
+            });
+
+            facade.OrderItemService.Create(new OrderItemBO()
+            {
+                Id = 3,
+                Quantity = 10,
+                UnitPrice = 100
+            });
+
+            facade.OrderItemService.Create(new OrderItemBO()
+            {
+                Id = 4,
+                Quantity = 10,
+                UnitPrice = 100
+            });
 
             facade.CustomerService.Create(new CustomerBO()
             {
