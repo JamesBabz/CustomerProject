@@ -9,8 +9,10 @@ import {environment} from '../../../environments/environment';
 export class ProductService {
 
   constructor(private http: HttpClient) { }
+
 getProducts(): Observable <Product[]> {
 
-    return this.http.get<Product[]>(environment.ApiEndPoint + '/product');
+    return this.http
+      .get<Product[]>(environment.ApiEndPoint + '/product');
 }
 }
