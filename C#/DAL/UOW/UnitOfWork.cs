@@ -16,7 +16,7 @@ namespace DAL.UOW
 
 
         public CustomerProjectContext context;
-        private static DbContextOptions<CustomerProjectContext> optionsStatic;
+       // private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
