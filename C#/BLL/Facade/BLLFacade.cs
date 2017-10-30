@@ -21,6 +21,23 @@ namespace BLL.Facade
             {
                get { return new CustomerService(facade); }
             }
-           
+
+        public OrderItemService OrderItemService
+        {
+            get { return new OrderItemService(facade); }
+        }
+
+        public OrderService OrderService
+        {
+            get { return new OrderService(facade); }
+        }
+
+        public ProductService ProductService
+        {
+            get { return new ProductService(facade); }
+        }
+
+
+
     }
 }
