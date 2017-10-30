@@ -9,9 +9,9 @@ import {Customer} from '../shared/customer.model';
 export class CustomerComponent implements OnInit {
 
   @Input()
-Customer: Customer;
+customer: Customer;
   constructor() {
-    this.Customer = {FirstName: 'Sigurd', LastName: 'Rasmussen', Address: 'Fuckerstreet'};
+
   }
 
   ngOnInit() {
