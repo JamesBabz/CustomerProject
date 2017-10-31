@@ -15,10 +15,12 @@ export class ProductDetailComponent implements OnInit {
 
   private _success = new Subject<string>();
 
+  inputNumber = 1;
   staticAlertClosed = false;
   successMessage: string;
   product: Product;
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute ) {
+  }
 
 
   ngOnInit() {
@@ -28,11 +30,15 @@ export class ProductDetailComponent implements OnInit {
     setTimeout(() => this.staticAlertClosed = true, 20000);
 
     this._success.subscribe((message) => this.successMessage = message);
-    debounceTime.call(this._success, 10000).subscribe(() => this.successMessage = null);
+    debounceTime.call(this._success, 5000).subscribe(() => this.successMessage = null);
   }
 
   public changeSuccessMessage() {
-    this._success.next( 'The item has been added to your card');
+    if (this.inputNumber > 1) {
+      this._success.next( this.inputNumber + ' '  + 'items have been added to your cart');
+    } else {
+      this._success.next( 'The item has been added to your cart');
+    }
   }
 
 
