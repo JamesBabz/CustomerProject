@@ -12,3 +12,17 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.img{
+  float: left;
+margin: 4px;
+  border-radius: 10px;
+}
+
+
+.text{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
