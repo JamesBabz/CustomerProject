@@ -21,7 +21,7 @@ namespace RestAPI.Controllers
             this.facade = facade;
         }
 
-        // GET: api/order
+        // GET: api/product
         [HttpGet]
         public IEnumerable<ProductBO> Get()
         {
