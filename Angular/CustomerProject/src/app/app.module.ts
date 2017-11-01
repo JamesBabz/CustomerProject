@@ -12,6 +12,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
+
+
 const appRoutes: Routes = [
   { path: 'product/:id',      component: ProductDetailComponent},
   { path: 'customer/:id',      component: CustomerDetailComponent},
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     path: 'product',
     component: ProductListComponent,
     data: { title: 'Product list' }
-  },{
+  },
+  {
     path: 'customer',
     component: CustomerListComponent,
     data: { title: 'Customer list' }
