@@ -12,17 +12,25 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
+import { OrderItemDetailComponent } from './order-items/order-item-detail/order-item-detail.component';
+import { OrderItemListComponent } from './order-items/order-item-list/order-item-list.component';
+import { OrderItemComponent } from './order-items/order-item/order-item.component';
 const appRoutes: Routes = [
   { path: 'product/:id',      component: ProductDetailComponent},
   { path: 'customer/:id',      component: CustomerDetailComponent},
+  { path: 'orderitem/:id',      component: OrderItemDetailComponent},
   {
     path: 'product',
     component: ProductListComponent,
     data: { title: 'Product list' }
-  },{
+  }, {
     path: 'customer',
     component: CustomerListComponent,
     data: { title: 'Customer list' }
+  }, {
+    path: 'cart',
+    component: OrderItemListComponent,
+    data: { title: 'Cart' }
   },
   { path: '',
     redirectTo: '/product',
@@ -30,6 +38,10 @@ const appRoutes: Routes = [
   },
   { path: '',
     redirectTo: '/customer',
+    pathMatch: 'full'
+  },
+  { path: 'orderItem',
+    redirectTo: '/cart',
     pathMatch: 'full'
   }
 ];
@@ -42,7 +54,10 @@ const appRoutes: Routes = [
     ProductDetailComponent,
     ProductListComponent,
     CustomerListComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    OrderItemDetailComponent,
+    OrderItemListComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,

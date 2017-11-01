@@ -22,9 +22,9 @@ namespace BLL.Facade
                get { return new CustomerService(facade); }
             }
 
-        public OrderItemService OrderItemService
+        public CartService CartService
         {
-            get { return new OrderItemService(facade); }
+            get { return new CartService(facade); }
         }
 
         public OrderService OrderService

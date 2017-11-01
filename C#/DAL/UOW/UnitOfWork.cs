@@ -10,7 +10,7 @@ namespace DAL.UOW
     {
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
-        public IRepository<OrderItem> OrderitemRepository { get; internal set; }
+        public IRepository<Cart> CartRepository { get; internal set; }
         public IRepository<Product> ProductRepository { get; internal set; }
 
 
@@ -25,7 +25,7 @@ namespace DAL.UOW
 
                 CustomerRepository = new CustomerRepository(context);
                 OrderRepository = new OrderRepository(context);
-                OrderitemRepository = new OrderItemRepository(context);
+                CartRepository = new CartRepository(context);
                 ProductRepository = new ProductRepository(context);
             }
 
