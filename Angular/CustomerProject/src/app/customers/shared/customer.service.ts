@@ -19,8 +19,7 @@ export class CustomerService {
   getCustomerById(id: number): Observable <Customer> {
     return this.hhtp
       .get(environment.ApiEndPoint +
-        '/customer/' + id)
-      ;
+        '/customer/' + id);
   }
 
 }

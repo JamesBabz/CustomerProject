@@ -12,51 +12,51 @@ namespace RestAPI.Controllers
     [EnableCors("MyPolicy")]
     [Produces("application/json")]
     [Route("api/[controller]")]
-    public class OrderItemController : Controller
+    public class CartController : Controller
     {
         IBLLFacade facade;
 
-        public OrderItemController(IBLLFacade facade)
+        public CartController(IBLLFacade facade)
         {
             this.facade = facade;
         }
 
-        // GET: api/orderItem
+        // GET: api/cart
         [HttpGet]
-        public IEnumerable<OrderItemBO> Get()
+        public IEnumerable<CartBO> Get()
         {
-            return facade.OrderItemService.GetAll();
+            return facade.CartService.GetAll();
         }
 
         // GET: api/order/5
         [HttpGet("{id}")]
-        public OrderItemBO Get(int id)
+        public CartBO Get(int id)
         {
-            return facade.OrderItemService.Get(id);
+            return facade.CartService.Get(id);
         }
 
-        // POST: api/orderItem/
+        // POST: api/cart/
         [HttpPost]
-        public IActionResult Post([FromBody]OrderItemBO orderItem)
+        public IActionResult Post([FromBody]CartBO cart)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            return Ok(facade.OrderItemService.Create(orderItem));
+            return Ok(facade.CartService.Create(cart));
         }
 
-        // PUT: api/orderItem/5
+        // PUT: api/cart/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]OrderItemBO orderItem)
+        public IActionResult Put(int id, [FromBody]CartBO cart)
         {
-            if (id != orderItem.Id)
+            if (id != cart.Id)
             {
-                return StatusCode(405, "Path id does not match orderItem ID json object");
+                return StatusCode(405, "Path id does not match cart ID json object");
             }
             try
             {
-                return Ok(facade.OrderItemService.Update(orderItem));
+                return Ok(facade.CartService.Update(cart));
             }
             catch (InvalidOperationException e)
             {
@@ -65,11 +65,11 @@ namespace RestAPI.Controllers
 
         }
 
-        // DELETE api/orderItem/5
+        // DELETE api/cart/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            facade.OrderItemService.Delete(id);
+            facade.CartService.Delete(id);
 
         }
     }

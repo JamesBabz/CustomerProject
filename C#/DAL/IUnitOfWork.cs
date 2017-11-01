@@ -8,7 +8,7 @@ namespace DAL
     {
         IRepository<Customer> CustomerRepository { get; }
         IRepository<Order> OrderRepository { get; }
-        IRepository<OrderItem> OrderitemRepository { get; }
+        IRepository<Cart> CartRepository { get; }
         IRepository<Product> ProductRepository { get; }
 
         int Complete();
