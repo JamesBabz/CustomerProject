@@ -1,2 +1,8 @@
 language: csharp
 solution: C#/CustomerProject.sln
+branches:
+  only:
+  - master
+  - development
+notifications:
+  email: false
