@@ -1,2 +1,2 @@
 language: csharp
-solution: CustomerProject.sln
+solution: C#/CustomerProject.sln
