@@ -1,14 +1,16 @@
 language: csharp
-solution: C#/CustomerProject.sln
+mono: none
+dotnet: 2.0.0
+dist: trusty
+install:
+- dotnet restore
+script:
+- dotnet build
+- dotnet test VRBDALTests/VRBDALTests.csproj
+- dotnet test VRBBLLTests/VRBBLLTests.csproj
 branches:
   only:
   - master
   - development
 notifications:
   email: false
-  dotnet: 2.0.0
-dist: trusty
-install:
-- dotnet restore
-script:
-- dotnet build
