@@ -10,7 +10,7 @@ namespace BLL.IServices
         //C
         UserBO Create(UserBO product);
         //R
-        //List<UserBO> GetAll();
+        List<UserBO> GetAll();
         UserBO Get(int id);
         //U
         UserBO Update(UserBO product);

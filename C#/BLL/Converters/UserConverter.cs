@@ -6,7 +6,7 @@ using DAL.Entities;
 
 namespace BLL.Converters
 {
-    class UserConverter
+    public class UserConverter
     {
         public User Convert(UserBO user)
         {

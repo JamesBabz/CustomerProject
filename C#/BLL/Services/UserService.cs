@@ -52,6 +52,14 @@ namespace BLL.Services
             }
         }
 
+        public List<UserBO> GetAll()
+        {
+            using (var uow = facade.UnitOfWork)
+            {
+                return uow.UserRepository.GetAll().Select(userConv.Convert).ToList();
+            }
+        }
+
         public UserBO Update(UserBO user)
         {
             using (var uow = facade.UnitOfWork)
@@ -59,7 +67,7 @@ namespace BLL.Services
                 var userFromDb = uow.UserRepository.Get(user.Id);
                 if (userFromDb == null)
                 {
-                    throw new InvalidOperationException("Customer not found");
+                    throw new InvalidOperationException("User not found");
                 }
 
                 userFromDb.Id = user.Id;

@@ -23,7 +23,8 @@ import {CartComponent} from './carts/cart/cart.component';
 import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
 import {CartService} from './carts/shared/cart.service';
-import {homedir} from 'os';
+import {FormsModule} from '@angular/forms';
+
 
 
 
@@ -100,7 +101,9 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule,
+
   ],
 
   providers: [CustomerService, ProductService, AuthenticationService, CartService, AuthGuard],

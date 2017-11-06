@@ -4,29 +4,36 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BLL;
+using BLL.Converters;
 using DAL;
 using DAL.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RestAPI.Helpers;
 
 namespace RestAPI.Controllers
 {
-        [Route("/token")]
-        public class TokenController : Controller
+    [EnableCors("MyPolicy")]
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    public class TokenController : Controller
         {
-            private readonly IRepository<User> repository;
+        IBLLFacade facade;
+            private UserConverter userConv = new UserConverter();
 
-            public TokenController(IRepository<User> repos)
+
+        public TokenController(IBLLFacade facade)
             {
-                repository = repos;
+                this.facade = facade;
             }
 
 
             [HttpPost]
             public IActionResult Login([FromBody]LoginInput LoginInput)
             {
-                var user = repository.GetAll().FirstOrDefault(u => u.Username == LoginInput.UserName);
+                var user = facade.UserService.GetAll().FirstOrDefault(u => u.Username == LoginInput.UserName);
 
                 // check if username exists
                 if (user == null)
@@ -40,7 +47,7 @@ namespace RestAPI.Controllers
                 return Ok(new
                 {
                     username = user.Username,
-                    token = GenerateToken(user)
+                    token = GenerateToken(userConv.Convert(user))
                 });
             }
 

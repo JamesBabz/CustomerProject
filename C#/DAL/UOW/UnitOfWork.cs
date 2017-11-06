@@ -22,13 +22,20 @@ namespace DAL.UOW
 
         public UnitOfWork(DbOptions opt)
         {
-                context = new CustomerProjectContext();
-                context.Database.EnsureCreated();
+
+            
+
+            context = new CustomerProjectContext();
 
                 CustomerRepository = new CustomerRepository(context);
                 OrderRepository = new OrderRepository(context);
                 CartRepository = new CartRepository(context);
                 ProductRepository = new ProductRepository(context);
+                UserRepository = new UserRepository(context);
+
+             
+
+
 
             string password = "1234";
             byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
@@ -51,6 +58,9 @@ namespace DAL.UOW
                 }
             };
 
+
+            context.Users.AddRange(users);
+           
 
         }
 
@@ -77,7 +87,7 @@ namespace DAL.UOW
         //    context.Database.EnsureCreated();
         //}
         //else
-        //{
+    
         //    var options = new DbContextOptionsBuilder<CustomerProjectContext>()
         //        .UseSqlServer(opt.ConnectionString)
         //        .Options;
