@@ -12,44 +12,35 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomerListComponent} from './customers/customer-list/customer-list.component';
 import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {LoginComponent} from './login/login.component';
 import {AuthenticationService} from './login/shared/authentication.service';
 import {AuthGuard} from './login/Auth/auth.guard';
 import {HomeComponent} from './home/home.component';
 
-=======
-=======
->>>>>>> Development
+
+
 import {CartComponent} from './carts/cart/cart.component';
 import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
-import {CartService} from "./carts/shared/cart.service";
-<<<<<<< HEAD
->>>>>>> Development
-=======
->>>>>>> Development
+import {CartService} from './carts/shared/cart.service';
+import {homedir} from 'os';
+
+
 
 const appRoutes: Routes = [
   {path: 'product/:id', component: ProductDetailComponent},
   {path: 'customer/:id', component: CustomerDetailComponent},
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-=======
+
   {path: 'cart/:id', component: CartDetailComponent},
->>>>>>> Development
-=======
-  {path: 'cart/:id', component: CartDetailComponent},
->>>>>>> Development
+
   {
     path: 'product',
     component: ProductListComponent,
     data: {title: 'Product list'}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   },
   {
     path: 'customer',
@@ -60,19 +51,7 @@ const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent,
     data: {title: 'Customer list'}
-=======
-  }, {
-    path: 'customer',
-    component: CustomerListComponent,
-    data: {title: 'Customer list'}
-  }, {
-    path: 'cart',
-    component: CartListComponent,
-    data: {title: 'Cart'}
->>>>>>> Development
-  },
-  {
-=======
+
   }, {
     path: 'customer',
     component: CustomerListComponent,
@@ -82,8 +61,8 @@ const appRoutes: Routes = [
     component: CartListComponent,
     data: {title: 'Cart'}
   },
+
   {
->>>>>>> Development
     path: '',
     redirectTo: '/product',
     pathMatch: 'full'
@@ -94,18 +73,8 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-<<<<<<< HEAD
-<<<<<<< HEAD
     path: '',
     redirectTo: '/login',
-=======
-    path: 'orderItem',
-    redirectTo: '/cart',
->>>>>>> Development
-=======
-    path: 'orderItem',
-    redirectTo: '/cart',
->>>>>>> Development
     pathMatch: 'full'
   }
 ];
@@ -119,19 +88,13 @@ const appRoutes: Routes = [
     ProductListComponent,
     CustomerListComponent,
     CustomerDetailComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    LoginComponent
-=======
+    LoginComponent,
+    HomeComponent,
+
     CartComponent,
     CartDetailComponent,
-    CartListComponent
->>>>>>> Development
-=======
-    CartComponent,
-    CartDetailComponent,
-    CartListComponent
->>>>>>> Development
+    CartListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -139,15 +102,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot()
   ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-  providers: [CustomerService, ProductService, AuthenticationService, AuthGuard],
-=======
-  providers: [CustomerService, ProductService, CartService],
->>>>>>> Development
-=======
-  providers: [CustomerService, ProductService, CartService],
->>>>>>> Development
+
+  providers: [CustomerService, ProductService, AuthenticationService, CartService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
