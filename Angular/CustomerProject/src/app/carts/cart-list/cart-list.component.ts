@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Cart} from '../shared/cart.model';
 import {CartService} from '../shared/cart.service';
 import {Router} from '@angular/router';
+import {CustomerService} from '../../customers/shared/customer.service';
+import {Customer} from '../../customers/shared/customer.model';
 
 @Component({
   selector: 'app-cart-list',
@@ -11,15 +13,21 @@ import {Router} from '@angular/router';
 export class CartListComponent implements OnInit {
 
   carts: Cart[];
+  customers: Customer[];
 
-  constructor(private cartService: CartService, private router: Router) {
+  constructor(private cartService: CartService, private customerService: CustomerService, private router: Router) {
   }
 
   ngOnInit() {
-    this.cartService.getProducts().subscribe(Carts => this.carts = Carts);
+    this.cartService.getCarts().subscribe(Carts => this.carts = Carts);
+    this.customerService.getCustomers().subscribe(Customers => this.customers = Customers);
   }
 
   details(cart: Cart) {
     this.router.navigateByUrl('/cart/' + cart.id);
+  }
+
+  customerById(id: number) {
+    return this.customers.find(c => c.id === id);
   }
 }

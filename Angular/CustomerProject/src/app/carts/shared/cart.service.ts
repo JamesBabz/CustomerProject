@@ -9,13 +9,13 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable <Cart[]> {
+  getCarts(): Observable <Cart[]> {
 
     return this.http
       .get<Cart[]>(environment.ApiEndPoint + '/cart');
   }
 
-  getProductById(id: number): Observable <Cart> {
+  getCartById(id: number): Observable <Cart> {
     return this.http
       .get(environment.ApiEndPoint +
         '/cart/' + id)
