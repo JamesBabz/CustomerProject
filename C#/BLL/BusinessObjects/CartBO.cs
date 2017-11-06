@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.BusinessObjects
 {
-    public class OrderItemBO : IBusinessObject
+    public class CartBO : IBusinessObject
     {
         public int Id { get; set; }
 

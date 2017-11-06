@@ -7,8 +7,9 @@ namespace BLL
     public interface IBLLFacade
     {
         CustomerService CustomerService { get; }
-        OrderItemService OrderItemService { get; }
+        CartService CartService { get; }
         OrderService OrderService { get; }
         ProductService ProductService { get; }
+        UserService UserService { get; }
     }
 }

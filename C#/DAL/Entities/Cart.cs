@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL.Entities
 {
-    public class OrderItem : IEntity
+    public class Cart : IEntity
     {
         public int Id { get; set; }
 

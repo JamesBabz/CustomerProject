@@ -17,6 +17,5 @@ namespace BLL.IServices
         ProductBO Update(ProductBO product);
         //D
         ProductBO Delete(int id);
-
     }
 }
