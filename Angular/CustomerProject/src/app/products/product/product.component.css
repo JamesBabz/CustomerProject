@@ -4,6 +4,11 @@
   margin: 5px;
 
 }
+
+.productBorder.unelectable:hover{
+  cursor: pointer;
+}
+
 .unelectable{
   -webkit-touch-callout: none;
   -webkit-user-select: none;
