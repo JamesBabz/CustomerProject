@@ -1,8 +1,23 @@
 .customerInfoBorder{
   float: right;
+  margin: 5px ;
 
 
 }
 .img {
   border-radius: 100px;
+  margin: 5px;
+}
+.btn-link {
+  display:block;
+  margin: 0 auto;
+}
+
+.modal-body{
+  width: 450px;
+
+}
+.input{
+  float: right;
+  width: 300px;
 }
