@@ -12,10 +12,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomerListComponent} from './customers/customer-list/customer-list.component';
 import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
-import {LoginComponent} from './login/login.component';
-import {AuthenticationService} from './login/shared/authentication.service';
-import {AuthGuard} from './login/Auth/auth.guard';
-import {HomeComponent} from './home/home.component';
+
 
 
 
@@ -24,6 +21,12 @@ import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
 import {CartService} from './carts/shared/cart.service';
 import {FormsModule} from '@angular/forms';
+
+import {TodoItemService} from './login/_services/todoitem.service';
+import {LoginComponent} from './login/login/login.component';
+import {AuthGuard} from './login/_guards/auth.guard';
+import {AuthenticationService} from './login/_services/authentication.service';
+import {HomeComponent} from './login/home/home.component';
 
 
 
@@ -49,15 +52,6 @@ const appRoutes: Routes = [
     data: {title: 'Customer list'}
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    data: {title: 'Customer list'}
-
-  }, {
-    path: 'customer',
-    component: CustomerListComponent,
-    data: {title: 'Customer list'}
-  }, {
     path: 'cart',
     component: CartListComponent,
     data: {title: 'Cart'}
@@ -106,7 +100,9 @@ const appRoutes: Routes = [
 
   ],
 
-  providers: [CustomerService, ProductService, AuthenticationService, CartService, AuthGuard],
+  providers: [CustomerService, ProductService, CartService, AuthGuard,
+    AuthenticationService,
+    TodoItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

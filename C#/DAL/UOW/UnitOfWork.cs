@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using DAL.Context;
 using DAL.Entities;
 using DAL.Repositories;
@@ -9,6 +10,12 @@ namespace DAL.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {
+
+        protected void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<Cart> CartRepository { get; internal set; }
@@ -16,15 +23,11 @@ namespace DAL.UOW
         public IRepository<User> UserRepository { get; internal set; }
 
 
-
         public CustomerProjectContext context;
         private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
-
-            
-
             context = new CustomerProjectContext();
 
                 CustomerRepository = new CustomerRepository(context);
@@ -32,10 +35,6 @@ namespace DAL.UOW
                 CartRepository = new CartRepository(context);
                 ProductRepository = new ProductRepository(context);
                 UserRepository = new UserRepository(context);
-
-             
-
-
 
             string password = "1234";
             byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
@@ -45,12 +44,14 @@ namespace DAL.UOW
             List<User> users = new List<User>
             {
                 new User {
+                    Id = 1,
                     Username = "UserJoe",
                     PasswordHash = passwordHashJoe,
                     PasswordSalt = passwordSaltJoe,
                     IsAdmin = false
                 },
                 new User {
+                    Id = 2,
                     Username = "AdminAnn",
                     PasswordHash = passwordHashAnn,
                     PasswordSalt = passwordSaltAnn,
@@ -63,7 +64,6 @@ namespace DAL.UOW
            
 
         }
-
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
