@@ -10,6 +10,7 @@ namespace DAL
         IRepository<Order> OrderRepository { get; }
         IRepository<Cart> CartRepository { get; }
         IRepository<Product> ProductRepository { get; }
+        IRepository<User> UserRepository { get; }
 
         int Complete();
     }
