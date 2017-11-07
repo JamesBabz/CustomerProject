@@ -30,5 +30,10 @@ export class CartDetailComponent implements OnInit {
     return products;
   }
 
+  deleteCart(id: number) {
+    this.route.paramMap.switchMap(params => this.cartService.deleteCart(+params.get('id'))).subscribe(Cart => this.cart = Cart);
+  }
+
+
 
 }
