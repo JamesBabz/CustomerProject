@@ -10,5 +10,6 @@ namespace BLL
         CartService CartService { get; }
         OrderService OrderService { get; }
         ProductService ProductService { get; }
+        UserService UserService { get; }
     }
 }
