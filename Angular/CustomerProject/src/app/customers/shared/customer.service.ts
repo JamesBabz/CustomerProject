@@ -23,8 +23,8 @@ export class CustomerService {
         '/customer/' + id);
   }
 
-  updateCustomerById(id: number): Observable<Customer> {
-    return this.hhtp.put(environment.ApiEndPoint + '/customer/' + id, Customer);
+  updateCustomerById(id: number, cust: Customer): Observable<Customer> {
+    return this.hhtp.put(environment.ApiEndPoint + '/customer/' + id, cust);
   }
 
   deleteCustomerById(id: number): Observable<Customer> {
