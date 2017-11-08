@@ -25,7 +25,7 @@ namespace DAL.Repositories
 
         public IEnumerable<Cart> GetAll()
         {
-            return _context.Cart.ToList();
+            return _context.Cart.Include(c => c.Customer).ToList();
         }
 
         public IEnumerable<Cart> GetAllById(List<int> ids)

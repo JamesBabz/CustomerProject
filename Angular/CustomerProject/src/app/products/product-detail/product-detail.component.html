@@ -3,13 +3,13 @@
   routerLink="/product"
   routerLinkActive="active">Back
 </button>
-<div class="product-detail unelectable">
+<div class="product-detail unelectable" *ngIf="product">
   <img class="img" src="http://via.placeholder.com/200x220">
   <h1>
-    {{product?.name}}
+    {{product.name}}
   </h1>
   <h2>
-    Price: {{product?.listPrice}} $
+    Price: {{product.listPrice}} $
   </h2>
   <hr>
   <p>
@@ -24,6 +24,8 @@
   <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
   </div>
 </div>
+
+<div *ngIf="!product"> Loading...</div>
 
 
 
