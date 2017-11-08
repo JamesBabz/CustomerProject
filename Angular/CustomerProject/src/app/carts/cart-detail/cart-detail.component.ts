@@ -22,13 +22,13 @@ export class CartDetailComponent implements OnInit {
       .switchMap(params => this.cartService.getCartById(+params.get('id'))).subscribe(Cart => this.cart = Cart);
   }
 
-  getProductsInCart() {
-    let productIds: number[];
-    let products: Product[];
-    productIds = this.cart.productIds.split(',').map(Number);
-
-    return products;
-  }
+  // getProductsInCart() {
+  //   let productIds: number[];
+  //   let products: Product[];
+  //   productIds = this.cart.productIds.split(',').map(Number);
+  //
+  //   return products;
+  // }
 
   deleteCart(id: number) {
     this.route.paramMap.switchMap(params => this.cartService.deleteCart(+params.get('id'))).subscribe(Cart => this.cart = Cart);
