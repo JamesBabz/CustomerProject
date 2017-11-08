@@ -16,6 +16,7 @@ namespace BLL.Converters
                 {
                     Id = cart.Id,
                     ProductIds = cart.ProductIds,
+                    Customer = new CustomerConverter().Convert(cart.Customer),
                     CustomerId = cart.CustomerId
                 };
             }
@@ -28,6 +29,7 @@ namespace BLL.Converters
             {
                 Id = cart.Id,
                 ProductIds = cart.ProductIds,
+                Customer = new CustomerConverter().Convert(cart.Customer),
                 CustomerId = cart.CustomerId
             };
         }

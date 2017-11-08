@@ -4,7 +4,7 @@
     <ng-container *ngFor="let cart of carts;">
       <div class="col-md-4">
         <app-cart
-          (click)='details(cart)' [cart]="cart" [customer]="customerById(cart.customerId)"></app-cart>
+          (click)='details(cart)' [cart]="cart"></app-cart>
       </div>
 
     </ng-container>

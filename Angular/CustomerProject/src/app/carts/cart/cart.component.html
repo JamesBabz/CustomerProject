@@ -1,7 +1,8 @@
-<div class = "cartBorder">
+<div class = "cartBorder" *ngIf="cart">
   <h3>
     Cart ID: {{cart.id}} <br>
-    Customer Name: {{customer.firstName}} {{customer.lastName}}
+    Customer Name: {{cart.customer.firstName}}
   </h3>
   <button (click)="createCart(cart)">Create</button>
 </div>
+<div *ngIf="!cart">Loading...</div>

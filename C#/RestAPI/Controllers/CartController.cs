@@ -67,9 +67,16 @@ namespace RestAPI.Controllers
 
         // DELETE api/cart/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            facade.CartService.Delete(id);
+            try
+            {
+                return Ok(facade.CartService.Delete(id));
+            }
+            catch (InvalidOperationException e)
+            {
+                return StatusCode(404, e.Message);
+            }
 
         }
     }

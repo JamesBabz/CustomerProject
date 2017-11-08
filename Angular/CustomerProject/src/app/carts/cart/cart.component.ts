@@ -10,8 +10,6 @@ import {Customer} from '../../customers/shared/customer.model';
 export class CartComponent implements OnInit {
   @Input()
   cart: Cart;
-  @Input()
-  customer: Customer;
 
   constructor() {
   }

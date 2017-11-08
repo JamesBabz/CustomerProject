@@ -16,16 +16,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title" id="myModalLabel">Account settings</h3>
       </div>
-      <div class="modal-body">
-       Firstname: <input class="input" type="text" [value]="customer?.firstName" (input)="inputFirstname=$event.target.value">
+      <div class="modal-body" *ngIf="customerEdit">
+       Firstname: <input class="input" type="text" [(ngModel)]="customerEdit.firstName"  >
         <p></p>
-        Lastname: <input class="input" type="text" [value]="customer?.lastName" (input)="inputLastname=$event.target.value">
+        Lastname: <input class="input" type="text" [(ngModel)]="customerEdit.lastName">
         <p></p>
-        Address: <input class="input" type="text" [value]="customer?.address" (input)="inputAddress=$event.target.value">
+        Address: <input class="input" type="text" [(ngModel)]="customerEdit.address">
       </div>
       <div class="modal-footer">
-        <button type="button" class=" btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class=" btn btn-default" data-dismiss="modal" (click)="cancel()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateCustomer()" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>

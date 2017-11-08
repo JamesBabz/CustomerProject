@@ -26,7 +26,6 @@ export class CartService {
   }
 
   deleteCart(id: number): Observable<Cart> {
-    console.log('hej')
     return this.http
       .delete(url + id)
       ;
