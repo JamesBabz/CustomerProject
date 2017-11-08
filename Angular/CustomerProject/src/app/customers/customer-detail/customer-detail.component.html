@@ -1,11 +1,13 @@
-<div class="customerInfoBorder">
-  {{customer.firstName}} {{customer.lastName}}
+<div class="customerInfoBorder" *ngIf="customer">
+  {{customer?.firstName}} {{customer?.lastName}}
   <img class = img src="http://via.placeholder.com/70x70">
   <hr>
   <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">Account Settings</button>
   <p></p>
-  <button type="button" class="btn-link" routerLink="/product" (click)="deleteCustomer()"> Delete account</button>
+  <button type="button" class="btn-link" (click)="deleteCustomer()"> Delete account</button>
 </div>
+<div *ngIf="!customer"><h1>Customer not found</h1>
+<button class="btn-danger" [routerLink]="['/customer']" >Go back</button></div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -15,11 +17,11 @@
         <h3 class="modal-title" id="myModalLabel">Account settings</h3>
       </div>
       <div class="modal-body">
-       Firstname: <input class="input" type="text" [value]="customer.firstName" (input)="inputFirstname=$event.target.value">
+       Firstname: <input class="input" type="text" [value]="customer?.firstName" (input)="inputFirstname=$event.target.value">
         <p></p>
-        Lastname: <input class="input" type="text" [value]="customer.lastName" (input)="inputLastname=$event.target.value">
+        Lastname: <input class="input" type="text" [value]="customer?.lastName" (input)="inputLastname=$event.target.value">
         <p></p>
-        Address: <input class="input" type="text" [value]="customer.address" (input)="inputAddress=$event.target.value">
+        Address: <input class="input" type="text" [value]="customer?.address" (input)="inputAddress=$event.target.value">
       </div>
       <div class="modal-footer">
         <button type="button" class=" btn btn-default" data-dismiss="modal">Close</button>
