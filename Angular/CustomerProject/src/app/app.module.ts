@@ -21,13 +21,8 @@ import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
 import {CartService} from './carts/shared/cart.service';
 import {FormsModule} from '@angular/forms';
-
-import {TodoItemService} from './login/_services/todoitem.service';
-import {LoginComponent} from './login/login/login.component';
-import {AuthGuard} from './login/_guards/auth.guard';
-import {AuthenticationService} from './login/_services/authentication.service';
-import {HomeComponent} from './login/home/home.component';
-
+import {LoginComponent} from './login/login.component';
+import {AuthenticationService} from './login/shared/authentication.service';
 
 
 
@@ -36,7 +31,7 @@ const appRoutes: Routes = [
   {path: 'customer/:id', component: CustomerDetailComponent},
 
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+ // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
 
   {path: 'cart/:id', component: CartDetailComponent},
 
@@ -84,7 +79,7 @@ const appRoutes: Routes = [
     CustomerListComponent,
     CustomerDetailComponent,
     LoginComponent,
-    HomeComponent,
+ //   HomeComponent,
 
     CartComponent,
     CartDetailComponent,
@@ -100,9 +95,9 @@ const appRoutes: Routes = [
 
   ],
 
-  providers: [CustomerService, ProductService, CartService, AuthGuard,
+  providers: [CustomerService, ProductService, CartService,
     AuthenticationService,
-    TodoItemService],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
