@@ -1,12 +1,13 @@
-<div class="product-detail unelectable">
+<div class="product-detail unelectable" *ngIf="cart">
   <h1>
-    {{cart?.id}}
+    {{cart.id}}
   </h1>
   <h2>
-    Product Ids: {{cart?.productIds}}
+    Product Ids: {{cart.productIds}}
   </h2>
   <h2>
-    Customer Id: {{cart?.customerId}}
+    Customer Id: {{cart.customerId}}
   </h2>
   <button (click)="deleteCart(cart)">Delete</button>
 </div>
+<div *ngIf="!cart"></div>
