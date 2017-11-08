@@ -41,7 +41,7 @@ namespace RestAPI.Controllers
 
                 // check if password is correct
                 if (!VerifyPasswordHash(LoginInput.Password, user.PasswordHash, user.PasswordSalt))
-                    return null;
+                    return Unauthorized();
 
                 // Authentication successful
                 return Ok(new

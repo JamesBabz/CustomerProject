@@ -77,7 +77,6 @@ const appRoutes: Routes = [
     CustomerListComponent,
     CustomerDetailComponent,
     LoginComponent,
- //   HomeComponent,
 
     CartComponent,
     CartDetailComponent,
@@ -90,7 +89,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    FormsModule,
+    FormsModule
 
   ],
 
