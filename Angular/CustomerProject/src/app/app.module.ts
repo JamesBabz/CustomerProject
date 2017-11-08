@@ -58,7 +58,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'customer',
     redirectTo: '/customer',
     pathMatch: 'full'
   },
