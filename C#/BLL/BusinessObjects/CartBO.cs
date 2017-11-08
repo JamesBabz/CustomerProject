@@ -10,7 +10,7 @@ namespace BLL.BusinessObjects
 
         public string ProductIds { get; set; }
 
-        public List<ProductBO> Products { get; set; }
+       // public List<ProductBO> Products { get; set; }
 
         public int CustomerId { get; set; }
 
