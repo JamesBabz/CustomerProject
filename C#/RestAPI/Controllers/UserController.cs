@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace RestAPI.Controllers
 {
-    [EnableCors("MyPolicy")]
+        [EnableCors("MyPolicy")]
         [Produces("application/json")]
         [Route("api/[controller]")]
         public class UserController : Controller

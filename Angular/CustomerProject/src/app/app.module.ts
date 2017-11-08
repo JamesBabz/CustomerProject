@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {CustomerComponent} from './customers/customer/customer.component';
@@ -39,7 +40,6 @@ const appRoutes: Routes = [
     path: 'product',
     component: ProductListComponent,
     data: {title: 'Product list'}
-
   },
   {
     path: 'customer',
@@ -63,11 +63,9 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
+    path: '**', redirectTo: ''
   }
-];
+  ];
 
 @NgModule({
   declarations: [
@@ -89,6 +87,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     FormsModule,

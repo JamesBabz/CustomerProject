@@ -10,12 +10,6 @@ namespace DAL.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {
-
-        protected void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<Cart> CartRepository { get; internal set; }
@@ -30,11 +24,11 @@ namespace DAL.UOW
         {
             context = new CustomerProjectContext();
 
-                CustomerRepository = new CustomerRepository(context);
-                OrderRepository = new OrderRepository(context);
-                CartRepository = new CartRepository(context);
-                ProductRepository = new ProductRepository(context);
-                UserRepository = new UserRepository(context);
+            CustomerRepository = new CustomerRepository(context);
+            OrderRepository = new OrderRepository(context);
+            CartRepository = new CartRepository(context);
+            ProductRepository = new ProductRepository(context);
+            UserRepository = new UserRepository(context);
 
             string password = "1234";
             byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
@@ -61,7 +55,7 @@ namespace DAL.UOW
 
 
             context.Users.AddRange(users);
-           
+
 
         }
 
@@ -87,7 +81,7 @@ namespace DAL.UOW
         //    context.Database.EnsureCreated();
         //}
         //else
-    
+
         //    var options = new DbContextOptionsBuilder<CustomerProjectContext>()
         //        .UseSqlServer(opt.ConnectionString)
         //        .Options;
