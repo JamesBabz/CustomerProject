@@ -24,7 +24,12 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerService.deleteCustomerById(this.customer.id).subscribe(Customer => this.customer = Customer);
+    this.customerService.deleteCustomerById(this.customer.id).subscribe(Customer => {
+      this.router.navigate(['/customer']);
+        console.log(Customer);
+      }
+    );
+
   }
 
 }
