@@ -1,1 +1,12 @@
-<app-cart *ngFor="let cart of carts" [cart]="cart"></app-cart>
+<h1>Carts</h1>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let cart of carts;">
+      <div class="col-md-4">
+        <app-cart
+          (click)='details(cart)' [cart]="cart" [customer]="customerById(cart.customerId)"></app-cart>
+      </div>
+
+    </ng-container>
+  </div>
+</div>

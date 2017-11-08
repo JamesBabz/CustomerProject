@@ -15,8 +15,8 @@ namespace BLL.Converters
                 return new Cart()
                 {
                     Id = cart.Id,
-                    Quantity = cart.Quantity,
-                    UnitPrice = cart.UnitPrice
+                    ProductIds = cart.ProductIds,
+                    CustomerId = cart.CustomerId
                 };
             }
         }
@@ -27,8 +27,8 @@ namespace BLL.Converters
             return new CartBO()
             {
                 Id = cart.Id,
-                Quantity = cart.Quantity,
-                UnitPrice = cart.UnitPrice
+                ProductIds = cart.ProductIds,
+                CustomerId = cart.CustomerId
             };
         }
 

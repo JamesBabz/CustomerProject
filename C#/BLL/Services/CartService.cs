@@ -76,8 +76,7 @@ namespace BLL.Services
                 }
 
                 cartFromDb.Id = cart.Id;
-                cartFromDb.Quantity = cart.Quantity;
-                cartFromDb.UnitPrice = cart.UnitPrice;
+                cartFromDb.ProductIds = cart.ProductIds;
                 uow.Complete();
 
                 return itemConv.Convert(cartFromDb);
