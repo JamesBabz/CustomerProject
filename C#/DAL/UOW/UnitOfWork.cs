@@ -16,17 +16,17 @@ namespace DAL.UOW
 
 
         public CustomerProjectContext context;
-        private static DbContextOptions<CustomerProjectContext> optionsStatic;
+        //private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
                 context = new CustomerProjectContext();
-                context.Database.EnsureCreated();
 
                 CustomerRepository = new CustomerRepository(context);
                 OrderRepository = new OrderRepository(context);
                 CartRepository = new CartRepository(context);
                 ProductRepository = new ProductRepository(context);
+                context.Database.EnsureCreated();
             }
 
 
