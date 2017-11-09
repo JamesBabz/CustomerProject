@@ -24,9 +24,16 @@ namespace BLL.Services
 
         public UserBO Create(UserBO user)
         {
+            string password;
+            byte[] passwordHash, passwordSalt;
             using (var uow = facade.UnitOfWork)
             {
+                password = user.UserPassword;
                 newUser = uow.UserRepository.Create(userConv.Convert(user));
+                CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                newUser.PasswordHash = passwordHash;
+                newUser.PasswordSalt = passwordSalt;
+
                 uow.Complete();
                 return userConv.Convert(newUser);
             }
@@ -81,5 +88,15 @@ namespace BLL.Services
 
             }
         }
-}
+
+        // The password salt is 1024 bits (=128 bytes) long.
+        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+        }
+    }
 }
