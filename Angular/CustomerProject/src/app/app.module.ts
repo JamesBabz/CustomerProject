@@ -17,6 +17,7 @@ import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
 import {CartService} from "./carts/shared/cart.service";
 import {FormsModule, NgModel} from '@angular/forms';
+import { CartItemComponent } from './cart-items/cart-item/cart-item.component';
 
 const appRoutes: Routes = [
   {path: 'product/:id', component: ProductDetailComponent},
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     CustomerDetailComponent,
     CartComponent,
     CartDetailComponent,
-    CartListComponent
+    CartListComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

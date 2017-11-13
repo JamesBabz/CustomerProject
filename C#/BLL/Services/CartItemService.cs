@@ -29,15 +29,48 @@ namespace BLL.Services
             throw new NotImplementedException();
         }
 
-        public CartItemBO Create(CartItemBO cartItem)
+        public CartItemBO Create(CartBO cart, ProductBO prod)
         {
             using (var uow = facade.UnitOfWork)
             {
+                CartItemBO cartItem = new CartItemBO()
+                {
+                    Cart = cart,
+                    Product = prod
+                };
                 _newCartItem = uow.CartItemRepository.Create(cartItemConv.Convert(cartItem));
                 uow.Complete();
                 return cartItemConv.Convert(_newCartItem);
             }
         }
+
+        public CartItemBO Create(ProductBO prod)
+        {
+            using (var uow = facade.UnitOfWork)
+            {
+                Cart cart = uow.CartRepository.Get(2);
+                CartItemBO cartItem = new CartItemBO()
+                {
+                    CartId = cart.Id,
+                   // Cart = cartConv.Convert(cart),
+                    ProductId = prod.Id,
+                    //Product = prod
+                };
+                _newCartItem = uow.CartItemRepository.Create(cartItemConv.Convert(cartItem));
+                uow.Complete();
+                return cartItemConv.Convert(_newCartItem);
+            }
+        }
+
+        //public CartItemBO Create(CartItemBO cartItem)
+        //{
+        //    using (var uow = facade.UnitOfWork)
+        //    {
+        //        _newCartItem = uow.CartItemRepository.Create(cartItemConv.Convert(cartItem));
+        //    uow.Complete();
+        //    return cartItemConv.Convert(_newCartItem);
+        //    }
+        //}
 
         public CartItemBO Delete(int id)
         {

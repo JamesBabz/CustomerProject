@@ -25,7 +25,7 @@ namespace BLL.Converters
                 {
                     Id = cartItem.Id,
                     Cart = cartCon.Convert(cartItem.Cart),
-                    CartId = cartItem.Id,
+                    CartId = cartItem.CartId,
                     Product = productCon.Convert(cartItem.Product),
                     ProductId = cartItem.ProductId
                 };
@@ -40,7 +40,7 @@ namespace BLL.Converters
                 {
                     Id = cartItem.Id,
                     Cart = cartCon.Convert(cartItem.Cart),
-                    CartId = cartItem.Id,
+                    CartId = cartItem.CartId,
                     Product = productCon.Convert(cartItem.Product),
                     ProductId = cartItem.ProductId
                 };

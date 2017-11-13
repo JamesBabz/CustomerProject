@@ -8,6 +8,7 @@ namespace BLL
     {
         CustomerService CustomerService { get; }
         CartService CartService { get; }
+        CartItemService CartItemService { get; }
         OrderService OrderService { get; }
         ProductService ProductService { get; }
     }
