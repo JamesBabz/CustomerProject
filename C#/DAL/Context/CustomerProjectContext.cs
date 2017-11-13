@@ -21,6 +21,7 @@ namespace DAL.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Cart { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<CartItem> CartItem { get; set; }
 
 
     }

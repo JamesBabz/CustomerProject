@@ -35,7 +35,7 @@ namespace DAL.Repositories
 
         public Cart Get(int Id)
         {
-            return _context.Cart.FirstOrDefault(x => x.Id == Id);
+            return _context.Cart.FirstOrDefault(x => x.CustomerId == Id);
         }
 
         public Cart Delete(int Id)

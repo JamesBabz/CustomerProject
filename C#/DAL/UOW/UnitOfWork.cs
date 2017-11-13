@@ -11,6 +11,7 @@ namespace DAL.UOW
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<Cart> CartRepository { get; internal set; }
+        public IRepository<CartItem> CartItemRepository { get; internal set; }
         public IRepository<Product> ProductRepository { get; internal set; }
 
 
@@ -20,14 +21,16 @@ namespace DAL.UOW
 
         public UnitOfWork(DbOptions opt)
         {
-                context = new CustomerProjectContext();
+            context = new CustomerProjectContext();
 
-                CustomerRepository = new CustomerRepository(context);
-                OrderRepository = new OrderRepository(context);
-                CartRepository = new CartRepository(context);
-                ProductRepository = new ProductRepository(context);
-                context.Database.EnsureCreated();
-            }
+            CustomerRepository = new CustomerRepository(context);
+            OrderRepository = new OrderRepository(context);
+            CartRepository = new CartRepository(context);
+            CartItemRepository = new CartItemRepository(context);
+            ProductRepository = new ProductRepository(context);
+
+            context.Database.EnsureCreated();
+        }
 
 
 

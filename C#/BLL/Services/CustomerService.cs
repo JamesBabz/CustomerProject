@@ -49,7 +49,7 @@ namespace BLL.Services
             using (var uow = facade.UnitOfWork)
             {
                 newCustomer = uow.CustomerRepository.Get(id);
-                newCustomer.Cart = uow.CartRepository.Get(newCustomer.CartId);
+               // newCustomer.Cart = uow.CartItemRepository.Get(newCustomer.CartId);
                 uow.Complete();
                 return custConv.Convert(newCustomer);
             }

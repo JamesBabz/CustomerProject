@@ -18,8 +18,8 @@ namespace BLL.Converters
                     FirstName = cust.FirstName,
                     LastName = cust.LastName,
                     Address = cust.Address,
-                    CartId = cust.CartId,
-                    Cart = new CartConverter().Convert(cust.Cart)
+                    //CartId = cust.CartId,
+                    //Cart = new CartConverter().Convert(cust.Cart)
 
                 };
             }
@@ -34,8 +34,8 @@ namespace BLL.Converters
                 FirstName = cust.FirstName,
                 LastName = cust.LastName,
                 Address = cust.Address,
-                CartId = cust.CartId,
-                Cart = new CartConverter().Convert(cust.Cart)
+                //CartId = cust.CartId,
+                //Cart = new CartConverter().Convert(cust.Cart)
             };
         }
 

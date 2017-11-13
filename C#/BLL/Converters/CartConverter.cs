@@ -9,15 +9,7 @@ namespace BLL.Converters
 {
     public class CartConverter
     {
-        private CustomerConverter custCon;
-        private ProductConverter prodCon;
-
-        public CartConverter()
-        {
-            this.custCon = new CustomerConverter();
-            this.prodCon = new ProductConverter();
-        }
-
+        
         public Cart Convert(CartBO cart)
         {
             if (cart == null) { return null; }
@@ -25,7 +17,7 @@ namespace BLL.Converters
                 return new Cart()
                 {
                     Id = cart.Id,
-                    ProductIds = cart.ProductIds
+                    //ProductIds = cart.ProductIds
                 };
             }
         }
@@ -36,7 +28,7 @@ namespace BLL.Converters
             return new CartBO()
             {
                 Id = cart.Id,
-                ProductIds = cart.ProductIds
+                //ProductIds = cart.ProductIds
             };
         }
 

@@ -37,6 +37,11 @@ namespace BLL.Facade
             get { return new ProductService(facade); }
         }
 
+        public CartItemService CartItemService
+        {
+            get { return new CartItemService(facade); }
+        }
+
 
 
     }
