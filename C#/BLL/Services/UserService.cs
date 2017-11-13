@@ -15,8 +15,6 @@ namespace BLL.Services
         private UserConverter userConv = new UserConverter();
         private User newUser;
 
-
-
         public UserService(IDALFacade facade)
         {
             this.facade = facade;
@@ -30,7 +28,7 @@ namespace BLL.Services
             {
                 password = user.UserPassword;
                 newUser = uow.UserRepository.Create(userConv.Convert(user));
-                CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                PasswordHash.CreatePasswordHash(password, out passwordHash, out passwordSalt);
                 newUser.PasswordHash = passwordHash;
                 newUser.PasswordSalt = passwordSalt;
 
@@ -85,17 +83,6 @@ namespace BLL.Services
                 uow.Complete();
 
                 return userConv.Convert(userFromDb);
-
-            }
-        }
-
-        // The password salt is 1024 bits (=128 bytes) long.
-        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
     }
