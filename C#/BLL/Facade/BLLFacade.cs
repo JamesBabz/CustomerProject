@@ -18,9 +18,9 @@ namespace BLL.Facade
         });
 
         public CustomerService CustomerService
-            {
-               get { return new CustomerService(facade); }
-            }
+        {
+            get { return new CustomerService(facade); }
+        }
 
         public CartService CartService
         {
@@ -42,7 +42,12 @@ namespace BLL.Facade
             get { return new CartItemService(facade); }
         }
 
+        public UserService UserService
+        {
+            get { return new UserService(facade); }
 
 
+
+        }
     }
 }
