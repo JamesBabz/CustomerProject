@@ -14,19 +14,19 @@ export class CustomerDetailComponent implements OnInit {
 
   customer: Customer;
   customerEdit: Customer;
-  inputAddress: string;
-  inputLastname: string;
-  inputFirstname: string;
-  constructor(private customerService: CustomerService, private router: Router, private route: ActivatedRoute) { }
+  profilePic: any;
+
+  constructor(private customerService: CustomerService, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.route.paramMap
       .switchMap(params => this.customerService
         .getCustomerById(+params.get('id')))
-        .subscribe(Customer => {
-          this.customer = Customer;
-          this.customerEdit = Object.assign({}, this.customer);
-        });
+      .subscribe(Customer => {
+        this.customer = Customer;
+        this.customerEdit = Object.assign({}, this.customer);
+      });
   }
 
   cancel() {
@@ -35,17 +35,29 @@ export class CustomerDetailComponent implements OnInit {
 
   deleteCustomer() {
     this.customerService.deleteCustomerById(this.customer.id).subscribe(Customer => {
-      this.router.navigate(['/customer']);
+        this.router.navigate(['/customer']);
       }
     );
 
   }
 
   updateCustomer() {
-     this.customerService.updateCustomerById(this.customer.id, this.customerEdit).subscribe(Customer => {
-       this.customer = Customer;
-       this.customerEdit = Object.assign({}, this.customer);
-     });
+    this.customerService.updateCustomerById(this.customer.id, this.customerEdit).subscribe(Customer => {
+      this.customer = Customer;
+      this.customerEdit = Object.assign({}, this.customer);
+    });
   }
 
+  onFileChange(fileInput: any) {
+
+    this.profilePic = fileInput.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.profilePic = e.target.result;
+    }
+
+    reader.readAsDataURL(fileInput.target.files[0]);
+  }
 }
