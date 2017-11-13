@@ -14,5 +14,7 @@ namespace BLL.BusinessObjects
 
         public string Address { get; set; }
 
+        public UserBO UserBo { get; set; }
+
     }
 }

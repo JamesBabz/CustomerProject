@@ -14,8 +14,16 @@ namespace DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
 
+            protected override void OnModelCreating(ModelBuilder modelBuilder)
+            {
+                modelBuilder.Entity<Customer>()
+                    .HasOne(u => u.User)
+                    .WithOne(c => c.Customer)
+                    .HasForeignKey<User>(c => c.CustomerForeignKey)
+                    .IsRequired();
+            }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
 

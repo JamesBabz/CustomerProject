@@ -14,5 +14,8 @@ namespace BLL.BusinessObjects
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }
+
+        public CustomerBO CustomerBo { get; set; }
+
     }
 }

@@ -15,6 +15,7 @@ namespace DAL.Entities
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }
 
+        public int CustomerForeignKey { get; set; }
         public Customer Customer { get; set; }
     }
 }
