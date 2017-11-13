@@ -13,12 +13,13 @@ namespace DAL.UOW
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<Cart> CartRepository { get; internal set; }
+        public IRepository<CartItem> CartItemRepository { get; internal set; }
         public IRepository<Product> ProductRepository { get; internal set; }
         public IRepository<User> UserRepository { get; internal set; }
 
 
         public CustomerProjectContext context;
-        private static DbContextOptions<CustomerProjectContext> optionsStatic;
+        //private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
@@ -27,9 +28,12 @@ namespace DAL.UOW
             CustomerRepository = new CustomerRepository(context);
             OrderRepository = new OrderRepository(context);
             CartRepository = new CartRepository(context);
+            CartItemRepository = new CartItemRepository(context);
             ProductRepository = new ProductRepository(context);
             UserRepository = new UserRepository(context);
-
+            
+            context.Database.EnsureCreated();
+        }
             //// Create two users with hashed and salted passwords
             //string password = "1234";
             //byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
@@ -56,7 +60,6 @@ namespace DAL.UOW
 
             //context.Users.AddRange(users);
             //Complete();
-
         }
 
         // This method computes a hashed and salted password using the HMACSHA512 algorithm.

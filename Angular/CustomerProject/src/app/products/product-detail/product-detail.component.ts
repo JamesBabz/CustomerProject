@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../shared/product.model';
 import {ProductService} from '../shared/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import {Subject} from 'rxjs/Subject';
 import {debounceTime} from 'rxjs/operator/debounceTime';
+import {CartItem} from '../../cart-items/cart-item/shared/cart-item.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +20,9 @@ export class ProductDetailComponent implements OnInit {
   staticAlertClosed = false;
   successMessage: string;
   product: Product;
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute ) {
+  cartItem: CartItem;
+
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {
   }
 
 
@@ -35,12 +38,15 @@ export class ProductDetailComponent implements OnInit {
 
   public changeSuccessMessage() {
     if (this.inputNumber > 1) {
-      this._success.next( this.inputNumber + ' '  + 'items have been added to your cart');
+      this._success.next(this.inputNumber + ' ' + 'items have been added to your cart');
     } else {
-      this._success.next( 'The item has been added to your cart');
+      this._success.next('The item has been added to your cart');
     }
-  }
 
+
+    // TEMP
+    this.productService.addProductToCart(this.product).subscribe(CartItem => this.cartItem = CartItem);
+  }
 
 
 }
