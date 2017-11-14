@@ -11,7 +11,9 @@ namespace BLL.BusinessObjects
         //public List<int> ProductIds { get; set; }
 
         //public List<ProductBO> Products { get; set; }
-        
+
+        public CustomerBO Customer { get; set; }
+
         public int CustomerId { get; set; }
         
     }

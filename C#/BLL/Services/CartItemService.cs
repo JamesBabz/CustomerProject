@@ -100,6 +100,14 @@ namespace BLL.Services
             }
         }
 
+        public List<CartItemBO> GetAllByCartId(int id)
+        {
+            using (var uow = facade.UnitOfWork)
+            {
+                return uow.CartItemRepository.GetAll().Select(cartItemConv.Convert).Where(ci => ci.CartId == id).ToList();
+            }
+        }
+
         public CartItemBO Update(CartItemBO cartItem)
         {
             using (var uow = facade.UnitOfWork)

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -24,7 +25,7 @@ namespace DAL.Repositories
 
         public IEnumerable<CartItem> GetAll()
         {
-            return _context.CartItems.ToList();
+            return _context.CartItems.Include(item => item.Product).ToList();
         }
 
         public IEnumerable<CartItem> GetAllById(List<int> ids)

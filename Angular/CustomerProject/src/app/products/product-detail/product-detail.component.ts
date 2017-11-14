@@ -45,7 +45,9 @@ export class ProductDetailComponent implements OnInit {
 
 
     // TEMP
-    this.productService.addProductToCart(this.product).subscribe(CartItem => this.cartItem = CartItem);
+    for (let i = 0; i < this.inputNumber; i++) {
+      this.productService.addProductToCart(this.product).subscribe(CartItem => this.cartItem = CartItem);
+    }
   }
 
 

@@ -1,13 +1,18 @@
 <div class="product-detail unelectable" *ngIf="cart">
-  <h1>
-    {{cart.id}}
-  </h1>
   <h2>
-    Product Ids: {{cart.productIds}}
+    Customer: {{cart.customer.firstName}} {{cart.customer.lastName}}
   </h2>
   <h2>
-    Customer Id: {{cart.customerId}}
+     <span *ngIf="items">
+    {{getSortedItemArray().toString()}}
+  </span>
+    Products: <span *ngFor="let item of items; let i = index"><span *ng></span>{{item.product.name}}<span *ngIf="i != items.length-1">,</span> </span>
   </h2>
+
+  <span *ngIf="items">
+  <h2>Total Price: {{calculateTotalPrice()}}</h2>
+  </span>
+
   <button (click)="deleteCart(cart)">Delete</button>
 </div>
 <div *ngIf="!cart"></div>

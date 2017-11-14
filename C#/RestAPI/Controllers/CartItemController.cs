@@ -30,9 +30,9 @@ namespace RestAPI.Controllers
 
         // GET: api/cartItem/5
         [HttpGet("{id}")]
-        public CartItemBO Get(int id)
+        public List<CartItemBO> Get(int id)
         {
-            return facade.CartItemService.Get(id);
+            return facade.CartItemService.GetAllByCartId(id);
         }
 
         // POST: api/cartItem/

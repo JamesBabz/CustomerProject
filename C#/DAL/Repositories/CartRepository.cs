@@ -25,7 +25,7 @@ namespace DAL.Repositories
 
         public IEnumerable<Cart> GetAll()
         {
-            return _context.Carts.ToList();
+            return _context.Carts.Include(cart => cart.Customer).ToList();
         }
 
         public IEnumerable<Cart> GetAllById(List<int> ids)
@@ -35,7 +35,7 @@ namespace DAL.Repositories
 
         public Cart Get(int Id)
         {
-            return _context.Carts.FirstOrDefault(x => x.Id == Id);
+            return _context.Carts.Include(cart => cart.Customer).FirstOrDefault(x => x.Id == Id);
         }
 
         public Cart Delete(int Id)

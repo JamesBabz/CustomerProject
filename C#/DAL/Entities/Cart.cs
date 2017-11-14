@@ -12,6 +12,8 @@ namespace DAL.Entities
 
         //public List<Product> Products { get; set; }
 
+        public Customer Customer { get; set; }
+
         public int CustomerId { get; set; }
     }
 }
