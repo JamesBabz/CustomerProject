@@ -1,17 +1,30 @@
 <div class="customerInfoBorder" *ngIf="customer">
   {{customer?.firstName}} {{customer?.lastName}}
-  <div *ngIf="profilePic">
+  <span *ngIf="profilePic">
     <img class= img [src]="profilePic">
-  </div>
-  <div *ngIf="!profilePic">
+  </span>
+  <span *ngIf="!profilePic">
     <img class="img" src="http://via.placeholder.com/70x70">
-  </div>
+  </span>
 
   <hr>
+
   <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">Account Settings</button>
   <p></p>
-  <button type="button" class="btn-link" (click)="deleteCustomer()"> Delete account</button>
+  <button type="button" class="btn-link" (click)="delete()">
+    <i aria-hidden="true"></i> Delete account
+  </button>
+  <div class="confirmBorder" *ngIf="confirmDelete">
+    <button class="btnb btn-danger" (click)="deleteCustomer()">
+      <i class="fa fa-trash-o" aria-hidden="true"></i> Confirm
+    </button>
+    <button class="btnb btn-warning" (click)="abortDelete()">
+      <i class="fa fa-times" aria-hidden="true"></i> Cancel
+    </button>
+  </div>
 </div>
+
+
 <div *ngIf="!customer">
 <p>Loading...</p>
 </div>
@@ -40,4 +53,5 @@
     </div>
   </div>
 </div>
+
 

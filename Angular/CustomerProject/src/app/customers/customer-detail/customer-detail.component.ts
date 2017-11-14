@@ -15,6 +15,7 @@ export class CustomerDetailComponent implements OnInit {
   customer: Customer;
   customerEdit: Customer;
   profilePic: any;
+  confirmDelete = false;
 
   constructor(private customerService: CustomerService, private router: Router, private route: ActivatedRoute) {
   }
@@ -34,11 +35,20 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerService.deleteCustomerById(this.customer.id).subscribe(Customer => {
-        this.router.navigate(['/customer']);
-      }
-    );
+    if (this.confirmDelete) {
+      this.customerService.deleteCustomerById(this.customer.id).subscribe(Customer => {
+          this.router.navigate(['/customer']);
+        }
+      );
+    }
+  }
 
+  delete() {
+    this.confirmDelete = true;
+  }
+
+  abortDelete() {
+    this.confirmDelete = false;
   }
 
   updateCustomer() {
