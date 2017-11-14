@@ -6,7 +6,6 @@ namespace DAL.Context
 {
     public class CustomerProjectContext : DbContext
     {
-
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
@@ -23,3 +22,4 @@ namespace DAL.Context
             }
         }
     }
+}
