@@ -1,12 +1,12 @@
 <h1>Carts</h1>
 <div class="container">
-  <div class="row">
-    <ng-container *ngFor="let cart of carts;">
-      <div class="col-md-4">
-        <app-cart
-          (click)='details(cart)' [cart]="cart"></app-cart>
-      </div>
-
+  <!--<div class="row">-->
+    <ng-container *ngFor="let cart of carts; let i = index">
+      <div class="clearfix" *ngIf="i % 3 == 0"></div>
+        <div class="col-md-4">
+          <app-cart
+            (click)='details(cart)' [cart]="cart"></app-cart>
+        </div>
     </ng-container>
-  </div>
+  <!--</div>-->
 </div>
