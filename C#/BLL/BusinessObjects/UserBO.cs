@@ -16,6 +16,5 @@ namespace BLL.BusinessObjects
         public bool IsAdmin { get; set; }
 
         public CustomerBO CustomerBo { get; set; }
-
     }
 }

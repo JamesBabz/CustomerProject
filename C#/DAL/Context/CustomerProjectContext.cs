@@ -4,9 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Context
 {
-        public class CustomerProjectContext : DbContext
-        {
-
+    public class CustomerProjectContext : DbContext
+    {
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -14,31 +13,13 @@ namespace DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
 
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
-            {
-                modelBuilder.Entity<Customer>()
-                    .HasOne(u => u.User)
-                    .WithOne(c => c.Customer)
-                    .HasForeignKey<User>(c => c.CustomerForeignKey)
-                    .IsRequired();
-            }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
                     @"Server=tcp:ateamcustomer.database.windows.net,1433;Initial Catalog=ATeamCustomerDb;Persist Security Info=False;User ID=admn;Password=Admin1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-
             }
-        
-}
-
-
-
-       
+        }
     }
 }

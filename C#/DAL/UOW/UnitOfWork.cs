@@ -18,7 +18,6 @@ namespace DAL.UOW
 
 
         public CustomerProjectContext context;
-        private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
@@ -29,6 +28,10 @@ namespace DAL.UOW
             CartRepository = new CartRepository(context);
             ProductRepository = new ProductRepository(context);
             UserRepository = new UserRepository(context);
+
+            // Create the database, if it does not already exists. This operation
+            // is necessary, if you use an SQL Server database.
+            context.Database.EnsureCreated();
         }
 
         public int Complete()
@@ -40,9 +43,6 @@ namespace DAL.UOW
         public void Dispose()
         {
             context.Dispose();
-
-
         }
-
     }
 }
