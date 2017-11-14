@@ -20,11 +20,11 @@ import {CustomerDetailComponent} from './customers/customer-detail/customer-deta
 import {CartComponent} from './carts/cart/cart.component';
 import {CartDetailComponent} from './carts/cart-detail/cart-detail.component';
 import {CartListComponent} from './carts/cart-list/cart-list.component';
+import {FormsModule, NgModel} from '@angular/forms';
+import { CartItemComponent } from './cart-items/cart-item/cart-item.component';
 import {CartService} from './carts/shared/cart.service';
-import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {AuthenticationService} from './login/shared/authentication.service';
-
 
 
 const appRoutes: Routes = [
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     CartComponent,
     CartDetailComponent,
     CartListComponent,
-
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,13 @@ namespace DAL.UOW
         public IRepository<Customer> CustomerRepository { get; internal set; }
         public IRepository<Order> OrderRepository { get; internal set; }
         public IRepository<Cart> CartRepository { get; internal set; }
+        public IRepository<CartItem> CartItemRepository { get; internal set; }
         public IRepository<Product> ProductRepository { get; internal set; }
         public IRepository<User> UserRepository { get; internal set; }
 
 
         public CustomerProjectContext context;
-        private static DbContextOptions<CustomerProjectContext> optionsStatic;
+        //private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
@@ -27,36 +28,37 @@ namespace DAL.UOW
             CustomerRepository = new CustomerRepository(context);
             OrderRepository = new OrderRepository(context);
             CartRepository = new CartRepository(context);
+            CartItemRepository = new CartItemRepository(context);
             ProductRepository = new ProductRepository(context);
             UserRepository = new UserRepository(context);
+            
+            context.Database.EnsureCreated();
+        //// Create two users with hashed and salted passwords
+        string password = "1234";
+        byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
+            CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
+            CreatePasswordHash(password, out passwordHashAnn, out passwordSaltAnn);
 
-            //// Create two users with hashed and salted passwords
-            //string password = "1234";
-            //byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
-            //CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
-            //CreatePasswordHash(password, out passwordHashAnn, out passwordSaltAnn);
+        List<User> users = new List<User>
+            {
+                new User {
+                    Id = 1,
+                    Username = "UserJoe",
+                    PasswordHash = passwordHashJoe,
+                    PasswordSalt = passwordSaltJoe,
+                    IsAdmin = false
+                },
+                new User {
+                    Id = 2,
+                    Username = "AdminAnn",
+                    PasswordHash = passwordHashAnn,
+                    PasswordSalt = passwordSaltAnn,
+                    IsAdmin = true
+                }
+            };
 
-            //List<User> users = new List<User>
-            //{
-            //    new User {
-            //        Id = 1,
-            //        Username = "UserJoe",
-            //        PasswordHash = passwordHashJoe,
-            //        PasswordSalt = passwordSaltJoe,
-            //        IsAdmin = false
-            //    },
-            //    new User {
-            //        Id = 2,
-            //        Username = "AdminAnn",
-            //        PasswordHash = passwordHashAnn,
-            //        PasswordSalt = passwordSaltAnn,
-            //        IsAdmin = true
-            //    }
-            //};
-
-            //context.Users.AddRange(users);
-            //Complete();
-
+        context.Users.AddRange(users);
+            Complete();
         }
 
         // This method computes a hashed and salted password using the HMACSHA512 algorithm.
@@ -92,6 +94,7 @@ namespace DAL.UOW
 
 
         }
+        
 
     }
 }

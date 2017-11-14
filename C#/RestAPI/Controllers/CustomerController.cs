@@ -37,11 +37,11 @@ namespace RestAPI.Controllers
         [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)
 	    {
-	        if (!ModelState.IsValid)
-	        {
-	            return BadRequest(ModelState);
-	        }
-	        return Ok(facade.CustomerService.Create(customer));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(facade.CustomerService.Create(customer));
 	    }
 
 	    // PUT: api/customer/5

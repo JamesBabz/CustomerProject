@@ -8,20 +8,11 @@ namespace BLL.BusinessObjects
     {
         public int Id { get; set; }
 
-        public string ProductIds { get; set; }
+        //public List<int> ProductIds { get; set; }
 
-       // public List<ProductBO> Products { get; set; }
-
+        //public List<ProductBO> Products { get; set; }
+        
         public int CustomerId { get; set; }
-
-        public CustomerBO Customer { get; set; }
-
-
-
-        // public int Quantity { get; set; }
-
-        // public double UnitPrice { get; set; }
-
         
     }
 }

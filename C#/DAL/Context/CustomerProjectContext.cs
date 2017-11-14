@@ -13,24 +13,22 @@ namespace DAL.Context
         public DbSet<Cart> Cart { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    @"Server=tcp:ateamcustomer.database.windows.net,1433;Initial Catalog=ATeamCustomerDb;Persist Security Info=False;User ID=admn;Password=Admin1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
+                    @"Server=tcp:ateamcustomer.database.windows.net,1433;Initial Catalog=ATeamCustomerDb;Persist Security Info=False;User ID=admn;
+                    Password=Admin1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
             }
-        
-}
+        }
 
 
 
        
-    }
+        }
 }

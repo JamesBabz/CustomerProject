@@ -28,7 +28,7 @@ namespace RestAPI.Controllers
             return facade.CartService.GetAll();
         }
 
-        // GET: api/order/5
+        // GET: api/cart/5
         [HttpGet("{id}")]
         public CartBO Get(int id)
         {
