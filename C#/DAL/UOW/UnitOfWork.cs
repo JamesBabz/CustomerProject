@@ -33,32 +33,6 @@ namespace DAL.UOW
             UserRepository = new UserRepository(context);
             
             context.Database.EnsureCreated();
-        //// Create two users with hashed and salted passwords
-        string password = "1234";
-        byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
-            CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
-            CreatePasswordHash(password, out passwordHashAnn, out passwordSaltAnn);
-
-        List<User> users = new List<User>
-            {
-                new User {
-                    Id = 1,
-                    Username = "UserJoe",
-                    PasswordHash = passwordHashJoe,
-                    PasswordSalt = passwordSaltJoe,
-                    IsAdmin = false
-                },
-                new User {
-                    Id = 2,
-                    Username = "AdminAnn",
-                    PasswordHash = passwordHashAnn,
-                    PasswordSalt = passwordSaltAnn,
-                    IsAdmin = true
-                }
-            };
-
-        context.Users.AddRange(users);
-            Complete();
         }
 
         // This method computes a hashed and salted password using the HMACSHA512 algorithm.

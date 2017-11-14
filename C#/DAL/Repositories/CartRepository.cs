@@ -19,13 +19,13 @@ namespace DAL.Repositories
 
         public Cart Create(Cart ent)
         {
-            _context.Cart.Add(ent);
+            _context.Carts.Add(ent);
             return ent;
         }
 
         public IEnumerable<Cart> GetAll()
         {
-            return _context.Cart.ToList();
+            return _context.Carts.ToList();
         }
 
         public IEnumerable<Cart> GetAllById(List<int> ids)
@@ -35,13 +35,13 @@ namespace DAL.Repositories
 
         public Cart Get(int Id)
         {
-            return _context.Cart.FirstOrDefault(x => x.Id == Id);
+            return _context.Carts.FirstOrDefault(x => x.Id == Id);
         }
 
         public Cart Delete(int Id)
         {
             var cart = Get(Id);
-            _context.Cart.Remove(cart);
+            _context.Carts.Remove(cart);
             return cart;
         }
     }
