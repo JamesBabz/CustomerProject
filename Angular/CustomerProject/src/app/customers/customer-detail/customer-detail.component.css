@@ -7,6 +7,8 @@
 .img {
   border-radius: 100px;
   margin: 5px;
+  width: 70px;
+  height: 70px;
 }
 .btn-link {
   display:block;

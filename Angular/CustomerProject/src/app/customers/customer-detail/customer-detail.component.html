@@ -1,13 +1,22 @@
 <div class="customerInfoBorder" *ngIf="customer">
   {{customer?.firstName}} {{customer?.lastName}}
-  <img class = img src="http://via.placeholder.com/70x70">
+  <div *ngIf="profilePic">
+    <img class= img [src]="profilePic">
+  </div>
+  <div *ngIf="!profilePic">
+    <img class="img" src="http://via.placeholder.com/70x70">
+  </div>
+
   <hr>
   <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">Account Settings</button>
   <p></p>
   <button type="button" class="btn-link" (click)="deleteCustomer()"> Delete account</button>
 </div>
-<div *ngIf="!customer"><h1>Customer not found</h1>
-<button class="btn-danger" [routerLink]="['/customer']" >Go back</button></div>
+<div *ngIf="!customer">
+<p>Loading...</p>
+</div>
+<!--<div *ngIf="!customer"><h1>Customer not found</h1>
+<button class="btn-danger" [routerLink]="['/customer']" >Go back</button></div>-->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -24,11 +33,11 @@
         Address: <input class="input" type="text" [(ngModel)]="customerEdit.address">
       </div>
       <div class="modal-footer">
+        <input type="file"  (change)="onFileChange($event)">
         <button type="button" class=" btn btn-default" data-dismiss="modal" (click)="cancel()">Close</button>
         <button type="button" class="btn btn-primary" (click)="updateCustomer()" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
 
