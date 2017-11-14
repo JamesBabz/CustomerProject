@@ -8,7 +8,7 @@ namespace BLL.IServices
     public interface ICartService
     {
         //C
-        CartBO Create(CartBO orderItem);
+        CartBO Create(CartBO cart);
         List<CartBO> AddCarts(List<CartBO> carts);
         //R
         List<CartBO> GetAll();

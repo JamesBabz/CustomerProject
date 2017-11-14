@@ -13,7 +13,7 @@ namespace BLL.Services
     public class CartService : ICartService
     {
         private IDALFacade facade;
-        private CartConverter itemConv = new CartConverter();
+        private CartConverter cartConv = new CartConverter();
         private Cart _newCart;
 
         public CartService(IDALFacade facade)
@@ -31,9 +31,9 @@ namespace BLL.Services
         {
             using (var uow = facade.UnitOfWork)
             {
-                _newCart = uow.CartRepository.Create(itemConv.Convert(cart));
+                _newCart = uow.CartRepository.Create(cartConv.Convert(cart));
                 uow.Complete();
-                return itemConv.Convert(_newCart);
+                return cartConv.Convert(_newCart);
             }
         }
 
@@ -43,7 +43,7 @@ namespace BLL.Services
             {
                 _newCart = uow.CartRepository.Delete(id);
                 uow.Complete();
-                return itemConv.Convert(_newCart);
+                return cartConv.Convert(_newCart);
             }
         }
 
@@ -53,7 +53,7 @@ namespace BLL.Services
             {
                 _newCart = uow.CartRepository.Get(id);
                 uow.Complete();
-                return itemConv.Convert(_newCart);
+                return cartConv.Convert(_newCart);
             }
         }
 
@@ -61,7 +61,7 @@ namespace BLL.Services
         {
             using (var uow = facade.UnitOfWork)
             {
-                return uow.CartRepository.GetAll().Select(itemConv.Convert).ToList();
+                return uow.CartRepository.GetAll().Select(cartConv.Convert).ToList();
             }
         }
 
@@ -76,10 +76,10 @@ namespace BLL.Services
                 }
 
                 cartFromDb.Id = cart.Id;
-                cartFromDb.ProductIds = cart.ProductIds;
+                //cartFromDb.ProductIds = cart.ProductIds;
                 uow.Complete();
 
-                return itemConv.Convert(cartFromDb);
+                return cartConv.Convert(cartFromDb);
 
             }
         }

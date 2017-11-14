@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using BLL.BusinessObjects;
 using DAL.Entities;
+using System.Linq;
 
 namespace BLL.Converters
 {
     public class CartConverter
     {
+        
         public Cart Convert(CartBO cart)
         {
             if (cart == null) { return null; }
@@ -15,9 +17,7 @@ namespace BLL.Converters
                 return new Cart()
                 {
                     Id = cart.Id,
-                    ProductIds = cart.ProductIds,
-                    Customer = new CustomerConverter().Convert(cart.Customer),
-                    CustomerId = cart.CustomerId
+                    //ProductIds = cart.ProductIds
                 };
             }
         }
@@ -28,9 +28,7 @@ namespace BLL.Converters
             return new CartBO()
             {
                 Id = cart.Id,
-                ProductIds = cart.ProductIds,
-                Customer = new CustomerConverter().Convert(cart.Customer),
-                CustomerId = cart.CustomerId
+                //ProductIds = cart.ProductIds
             };
         }
 
