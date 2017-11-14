@@ -15,14 +15,12 @@ namespace BLL.Services
         private IDALFacade facade;
         private ProductConverter prodConv = new ProductConverter();
         private Product newProduct;
-
-
+        
         public ProductService(IDALFacade facade)
         {
             this.facade = facade;
         }
-
-
+        
         public ProductBO Create(ProductBO product)
         {
             using (var uow = facade.UnitOfWork)

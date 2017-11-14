@@ -16,9 +16,7 @@ namespace BLL.Services
         private IDALFacade facade;
         private CustomerConverter custConv = new CustomerConverter();
         private Customer newCustomer;
-
-
-
+        
         public CustomerService(IDALFacade facade)
         {
             this.facade = facade;
@@ -67,7 +65,7 @@ namespace BLL.Services
             using (var uow = facade.UnitOfWork)
             {
                 var customerFromDb = uow.CustomerRepository.Get(cust.Id);
-                if (customerFromDb==null)
+                if (customerFromDb == null)
                 {
                     throw new InvalidOperationException("Customer not found");
                 }
@@ -79,7 +77,6 @@ namespace BLL.Services
                 uow.Complete();
 
                 return custConv.Convert(customerFromDb);
-
             }
         }
     }

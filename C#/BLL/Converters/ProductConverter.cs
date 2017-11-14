@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BLL.BusinessObjects;
+﻿using BLL.BusinessObjects;
 using DAL.Entities;
 
 namespace BLL.Converters
@@ -33,7 +30,5 @@ namespace BLL.Converters
                 };
             };
         }
-
-
     }
 }

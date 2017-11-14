@@ -1,11 +1,7 @@
-﻿using System;
-using BLL;
-using BLL.BusinessObjects;
+﻿using BLL;
 using BLL.Facade;
-using BLL.Services;
 using DAL;
 using DAL.Entities;
-using DAL.Facade;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using RestAPI.Helpers;
+using System;
 
 namespace RestAPI
 {

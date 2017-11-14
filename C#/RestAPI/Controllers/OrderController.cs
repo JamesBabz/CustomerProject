@@ -62,7 +62,6 @@ namespace RestAPI.Controllers
             {
                 return StatusCode(404, e.Message);
             }
-
         }
 
         // DELETE api/order/5
@@ -70,7 +69,6 @@ namespace RestAPI.Controllers
         public void Delete(int id)
         {
             facade.OrderService.Delete(id);
-
         }
     }
 }
