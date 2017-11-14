@@ -19,7 +19,6 @@ namespace DAL.UOW
 
 
         public CustomerProjectContext context;
-        //private static DbContextOptions<CustomerProjectContext> optionsStatic;
 
         public UnitOfWork(DbOptions opt)
         {
@@ -31,10 +30,13 @@ namespace DAL.UOW
             CartItemRepository = new CartItemRepository(context);
             ProductRepository = new ProductRepository(context);
             UserRepository = new UserRepository(context);
-            
-            context.Database.EnsureCreated();
-        }
 
+
+            // Create the database, if it does not already exists. This operation
+            // is necessary, if you use an SQL Server database.
+            context.Database.EnsureCreated();
+
+        }
         // This method computes a hashed and salted password using the HMACSHA512 algorithm.
         // The HMACSHA512 class computes a Hash-based Message Authentication Code (HMAC) using 
         // the SHA512 hash function. When instantiated with the parameterless constructor (as
@@ -55,7 +57,6 @@ namespace DAL.UOW
             }
         }
 
-
         public int Complete()
         {
             //The number of objects written to the underlying database.
@@ -65,10 +66,6 @@ namespace DAL.UOW
         public void Dispose()
         {
             context.Dispose();
-
-
         }
-        
-
     }
 }

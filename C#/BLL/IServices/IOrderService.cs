@@ -16,6 +16,5 @@ namespace BLL.IServices
         OrderBO Update(OrderBO order);
         //D
         OrderBO Delete(int id);
-
     }
 }

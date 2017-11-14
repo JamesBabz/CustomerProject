@@ -1,9 +1,8 @@
-﻿using System;
-using BLL.BusinessObjects;
-using BLL.Services;
+﻿using BLL.Services;
 using DAL;
 using DAL.Facade;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace BLL.Facade
 {
@@ -45,9 +44,6 @@ namespace BLL.Facade
         public UserService UserService
         {
             get { return new UserService(facade); }
-
-
-
         }
     }
 }

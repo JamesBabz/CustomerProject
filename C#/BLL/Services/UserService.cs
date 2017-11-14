@@ -15,8 +15,6 @@ namespace BLL.Services
         private UserConverter userConv = new UserConverter();
         private User newUser;
 
-
-
         public UserService(IDALFacade facade)
         {
             this.facade = facade;
@@ -24,9 +22,16 @@ namespace BLL.Services
 
         public UserBO Create(UserBO user)
         {
+            string password;
+            byte[] passwordHash, passwordSalt;
             using (var uow = facade.UnitOfWork)
             {
+                password = user.UserPassword;
                 newUser = uow.UserRepository.Create(userConv.Convert(user));
+                PasswordHash.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                newUser.PasswordHash = passwordHash;
+                newUser.PasswordSalt = passwordSalt;
+
                 uow.Complete();
                 return userConv.Convert(newUser);
             }
@@ -78,8 +83,7 @@ namespace BLL.Services
                 uow.Complete();
 
                 return userConv.Convert(userFromDb);
-
             }
         }
-}
+    }
 }

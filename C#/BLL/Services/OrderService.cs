@@ -17,7 +17,6 @@ namespace BLL.Services
         private OrderConverter orderConv = new OrderConverter();
         private Order newOrder;
 
-
         public OrderService(IDALFacade facade)
         {
             this.facade = facade;

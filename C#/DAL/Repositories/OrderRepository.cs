@@ -7,7 +7,7 @@ using DAL.Entities;
 
 namespace DAL.Repositories
 {
-     class OrderRepository : IRepository<Order>
+    class OrderRepository : IRepository<Order>
     {
         CustomerProjectContext _context;
 

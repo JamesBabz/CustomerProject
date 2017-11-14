@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RestAPI.Controllers
 {
-	[EnableCors("MyPolicy")]
-	[Produces("application/json")]
-	[Route("api/[controller]")]
-	public class CustomerController : Controller
-	{
+    [EnableCors("MyPolicy")]
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    public class CustomerController : Controller
+    {
         IBLLFacade facade;
 
         public CustomerController(IBLLFacade facade)
@@ -19,29 +19,30 @@ namespace RestAPI.Controllers
             this.facade = facade;
         }
 
-	    // GET: api/customer
+        // GET: api/customer
         [HttpGet]
-	    public IEnumerable<CustomerBO> Get()
-	    {
-	        return facade.CustomerService.GetAll();
-	    }
+        public IEnumerable<CustomerBO> Get()
+        {
+            return facade.CustomerService.GetAll();
+        }
 
-	    // GET: api/customer/5
+        // GET: api/customer/5
         [HttpGet("{id}")]
-         public CustomerBO Get(int id)
-         {
-             return facade.CustomerService.Get(id);
-         }
+        public CustomerBO Get(int id)
+        {
+            return facade.CustomerService.Get(id);
+        }
 
-	    // POST: api/customer/
+        // POST: api/customer/
         [HttpPost]
-	    public IActionResult Post([FromBody]CustomerBO customer)
-	    {
+        public IActionResult Post([FromBody]CustomerBO customer)
+        {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             return Ok(facade.CustomerService.Create(customer));
+        }
 	    }
 
 	    // PUT: api/customer/5
@@ -61,22 +62,18 @@ namespace RestAPI.Controllers
 	            return StatusCode(404, e.Message);
 	        }
 
-	    }
-
         // DELETE api/customer/5
         [HttpDelete("{id}")]
-	    public IActionResult Delete(int id)
-	    {
-           
-	        try
-	        {
-	            return Ok(facade.CustomerService.Delete(id));
-	        }
-	        catch (InvalidOperationException e)
-	        {
-	            return StatusCode(404, e.Message);
-	        }
-
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                return Ok(facade.CustomerService.Delete(id));
+            }
+            catch (InvalidOperationException e)
+            {
+                return StatusCode(404, e.Message);
+            }
         }
     }
 }
