@@ -14,5 +14,9 @@ namespace BLL.BusinessObjects
 
         public string Address { get; set; }
 
+        //public int CartId { get; set; }
+
+        //public CartBO Cart { get; set; }
+
     }
 }

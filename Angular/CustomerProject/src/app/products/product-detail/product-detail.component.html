@@ -3,23 +3,29 @@
   routerLink="/product"
   routerLinkActive="active">Back
 </button>
-<div class="product-detail unelectable">
+<div class="product-detail unelectable" *ngIf="product">
   <img class="img" src="http://via.placeholder.com/200x220">
   <h1>
-    Product: {{product?.name}}
+    {{product.name}}
   </h1>
   <h2>
-    Price: {{product?.listPrice}} $
+    Price: {{product.listPrice}} $
   </h2>
-
-
+  <hr>
   <p>
-    <button class="btn btn-primary" (click)="changeSuccessMessage()">Buy</button>
+    Total price : {{inputNumber * product.listPrice}} $ incl. vat.
+  </p>
+  <p>
+    Amount of {{product.name}}(s) &emsp;
+    <input type="number" [value]="inputNumber" (input)="inputNumber=$event.target.value" class="input">
+    <button class="btnbuy btn-success" (click)="changeSuccessMessage()">Add to cart</button>
   </p>
   <div class="col-md-5 ">
   <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
   </div>
 </div>
+
+<div *ngIf="!product"> Loading...</div>
 
 
 

@@ -1,0 +1,25 @@
+.customerInfoBorder{
+  float: right;
+  margin: 5px ;
+
+
+}
+.img {
+  border-radius: 100px;
+  margin: 5px;
+  width: 70px;
+  height: 70px;
+}
+.btn-link {
+  display:block;
+  margin: 0 auto;
+}
+
+.modal-body{
+  width: 450px;
+
+}
+.input{
+  float: right;
+  width: 300px;
+}

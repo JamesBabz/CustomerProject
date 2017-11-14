@@ -3,6 +3,9 @@ import {Customer} from './customers/shared/customer.model';
 import {CustomerService} from './customers/shared/customer.service';
 import {ProductService} from './products/shared/product.service';
 import {Product} from './products/shared/product.model';
+import {Cart} from "./carts/shared/cart.model";
+
+
 
 @Component({
   selector: 'app-root',
@@ -12,8 +15,10 @@ import {Product} from './products/shared/product.model';
 export class AppComponent {
   customers: Customer[];
   products: Product[];
+  carts: Cart[];
 
-constructor(){
+
+constructor() {
 
 
 }

@@ -37,11 +37,11 @@ namespace RestAPI.Controllers
         [HttpPost]
 	    public IActionResult Post([FromBody]CustomerBO customer)
 	    {
-	        if (!ModelState.IsValid)
-	        {
-	            return BadRequest(ModelState);
-	        }
-	        return Ok(facade.CustomerService.Create(customer));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(facade.CustomerService.Create(customer));
 	    }
 
 	    // PUT: api/customer/5
@@ -65,10 +65,18 @@ namespace RestAPI.Controllers
 
         // DELETE api/customer/5
         [HttpDelete("{id}")]
-	    public void Delete(int id)
+	    public IActionResult Delete(int id)
 	    {
-            facade.CustomerService.Delete(id);
+           
+	        try
+	        {
+	            return Ok(facade.CustomerService.Delete(id));
+	        }
+	        catch (InvalidOperationException e)
+	        {
+	            return StatusCode(404, e.Message);
+	        }
 
-	    }
+        }
     }
 }
